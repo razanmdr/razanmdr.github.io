@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ root }}static/css/style.css">
+  <link rel="stylesheet" href="{{ root }}static/css/style.css?v={{ asset_v }}">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80' font-family='monospace'>&gt;_</text></svg>">
   <script>try{const t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
@@ -49,7 +49,7 @@
       <span class="muted small">Statische Seite, generiert mit Python &amp; Jinja2, gehostet auf GitHub Pages. Keine Cookies, kein Tracking.</span>
     </div>
   </footer>
-  <script src="{{ root }}static/js/main.js"></script>
+  <script src="{{ root }}static/js/main.js?v={{ asset_v }}"></script>
   {% block scripts %}{% endblock %}
 </body>
 </html>

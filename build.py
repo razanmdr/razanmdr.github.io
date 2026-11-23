@@ -44,6 +44,16 @@ def github_repo_count(user):
         return None
 
 
+def asset_version():
+    """Hash of CSS/JS so browsers fetch new assets after each deploy."""
+    import hashlib
+    h = hashlib.md5()
+    for f in sorted((ROOT / "static").rglob("*.*")):
+        if f.suffix in (".css", ".js"):
+            h.update(f.read_bytes())
+    return h.hexdigest()[:8]
+
+
 def build():
     site = load("site.yaml")
     projects = load("projects.yaml")
@@ -70,6 +80,7 @@ def build():
         featured=[p for p in projects if p.get("featured")],
         categories=CATEGORIES,
         tour_json=json.dumps(site["tour"], ensure_ascii=False),
+        asset_v=asset_version(),
     )
 
     if OUT.exists():
