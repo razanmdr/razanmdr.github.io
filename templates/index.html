@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% import "_macros.html" as m %}
 {% import "_visuals.html" as v %}
+{% import "_illus.html" as il %}
 {% block main %}
 
 <section id="hero" class="hero wrap">
@@ -75,12 +76,13 @@
   <div class="grid" id="project-grid">
     {% for p in projects if not p.featured %}
     <article class="card" data-cat="{{ p.category }}">
+      {% if p.illustration and not p.image %}<div class="thumb thumb-il">{{ il.render(p.illustration) }}</div>{% endif %}
       {% if p.image %}<img class="thumb{% if p.image.plot %} plot{% endif %}" src="{{ root }}{{ p.image.src }}" alt="{{ p.image.alt }}" loading="lazy">{% endif %}
       <div class="card-top"><span class="cat cat-{{ p.category }}">{{ p.category_label }}</span>
         {% if p.metric %}<span class="badge">{{ p.metric.value }} {{ p.metric.label }}</span>{% endif %}</div>
       <h3>{{ p.title }}</h3>
       <p>{{ p.summary }}</p>
-      {% if p.flow %}{{ m.flow(p.flow) }}{% endif %}
+      {% if p.flow and not p.illustration %}{{ m.flow(p.flow) }}{% endif %}
       {{ m.tags(p.tags) }}
       {{ m.links(p, root) }}
     </article>

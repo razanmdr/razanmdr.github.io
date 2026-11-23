@@ -123,6 +123,10 @@
     outcome: "Alter (p = 0,063) und Geschlecht (p = 0,54) unterscheiden sich nicht signifikant, die Gruppen sind also vergleichbar. Die teurere Strategie bringt +278 $ pro Kunde (p < 0,001), im engeren Fenster +287 $ (p = 0,012) – deutlich mehr als die 50 $ Mehrkosten."
 
 - slug: shopbot
+  illustration:
+    cmd: "streamlit run shopbot.py"
+    kind: chat
+    lines: [[user, "Laufschuhe unter 80 €?"], [bot, "3 Treffer gefunden – sortiert nach Bewertung"], [user, "Zeig Verkäufe nach Land"]]
   title: "ShopBot – KI-Shopping-Assistent"
   category: ai
   summary: "Konversationeller Assistent mit Produktsuche und Analytics-Dashboard auf Basis des UCI-Online-Retail-Datensatzes."
@@ -131,6 +135,7 @@
     - {label: "Code", url: "https://github.com/razanmdr/AI_Proj/tree/main/AI-Assisted%20Shopping%20Research"}
 
 - slug: retail-pipeline
+  illustration: {cmd: "etl retail --load", kind: bars, vals: [34, 38, 36, 40, 37, 42, 39, 41, 38, 44, 47, 62], hl: 11}
   title: "Retail Data Pipeline"
   category: de
   summary: "End-to-End-Pipeline für Walmart-Verkaufsdaten."
@@ -140,6 +145,10 @@
     - {label: "Code", url: "https://github.com/razanmdr/Data_Eng/tree/main/Building%20a%20Retail%20Data%20Pipeline"}
 
 - slug: energy-etl
+  illustration:
+    cmd: "etl electricity.json"
+    kind: lines
+    series: [[56, 58, 55, 60, 57, 59, 61, 58, 60], [36, 35, 38, 36, 37, 35, 38, 37, 36], [14, 16, 13, 15, 17, 14, 16, 15, 18]]
   title: "ETL-Pipeline für Energiedaten"
   category: de
   summary: "Strommarktdaten des U.S. Department of Energy aus CSV und verschachteltem JSON."
@@ -149,6 +158,7 @@
     - {label: "Code", url: "https://github.com/razanmdr/Data_Eng/tree/main/Powering%20Data%20for%20the%20Department%20of%20Energy%20-%20Building%20an%20ETL%20Pipeline"}
 
 - slug: pyspark-orders
+  illustration: {cmd: "spark-submit orders_clean.py", kind: bars, vals: [58, 64, 40, 52, 70, 46, 62, 55], hl: 4}
   title: "Bestelldaten bereinigen mit PySpark"
   category: de
   summary: "Bereinigung eines E-Commerce-Bestelldatensatzes mit PySpark."
@@ -157,6 +167,11 @@
     - {label: "Code", url: "https://github.com/razanmdr/Data_Eng/tree/main/Cleaning%20an%20Orders%20Dataset%20with%20PySpark"}
 
 - slug: dbt-bank-marketing
+  illustration:
+    cmd: "dbt run --select campaign"
+    kind: table
+    cols: [client_id, outcome, contact]
+    rows: [["#1042", "✓", "2024-05"], ["#1043", "✗", "2024-05"], ["#1044", "✓", "2024-06"]]
   title: "Kampagnendaten modellieren"
   category: de
   summary: "Transformation und Bereinigung von Bank-Marketingkampagnen-Daten."
@@ -165,6 +180,10 @@
     - {label: "Code", url: "https://github.com/razanmdr/Data_Eng/tree/main/Cleaning%20Bank%20Marketing%20Campaign%20Data"}
 
 - slug: london-travel
+  illustration:
+    cmd: "snowsql -f tfl.sql"
+    kind: lines
+    series: [[60, 62, 63, 61, 64, 62, 30, 44, 52], [40, 42, 44, 45, 46, 45, 16, 26, 34], [18, 20, 22, 24, 25, 26, 12, 18, 22]]
   title: "London Travel Network"
   category: de
   summary: "Analyse von zwölf Jahren Transport-for-London-Daten."
@@ -173,6 +192,7 @@
     - {label: "Code", url: "https://github.com/razanmdr/Data_Eng/tree/main/Exploring%20London%27s%20Travel%20Network"}
 
 - slug: ticket-classifier
+  illustration: {cmd: "python train_cnn.py", kind: matrix, vals: [[0.9, 0.1, 0.05, 0.1, 0.0], [0.1, 0.8, 0.1, 0.0, 0.1], [0.05, 0.15, 0.7, 0.1, 0.05], [0.1, 0.0, 0.1, 0.75, 0.1], [0.0, 0.1, 0.05, 0.1, 0.85]]}
   title: "Service Desk Ticket Classifier"
   category: ml
   summary: "CNN-Textklassifikator, von Grund auf trainiert, für fünf Kategorien von Finanzdienstleistungen."
@@ -225,6 +245,7 @@
     status: "Benotetes Prüfungsprojekt im M.Sc. E-Commerce. Threshold wurde wie in der Kurslösung auf den Trainingsdaten bestimmt."
 
 - slug: subscriber-churn
+  illustration: {cmd: "python kmeans_personas.py", kind: scatter}
   title: "Subscriber Churn Prediction"
   category: ml
   summary: "Abwanderungsprognose für gezieltes Marketing."
@@ -243,6 +264,7 @@
     - {label: "Code", url: "https://github.com/razanmdr/Machine_Learning/tree/main/Building%20an%20E-Commerce%20Clothing%20Classifier%20Model%20with%20Keras"}
 
 - slug: demand-forecasting
+  illustration: {cmd: "spark-submit forecast.py", kind: forecast}
   title: "Demand Forecasting mit PySpark"
   category: ml
   summary: "Nachfrageprognose für E-Commerce-Daten."
@@ -251,6 +273,10 @@
     - {label: "Code", url: "https://github.com/razanmdr/Machine_Learning/tree/main/Building%20a%20Demand%20Forecasting%20Model"}
 
 - slug: odoosynapse
+  illustration:
+    cmd: "n8n execute invoice-flow"
+    kind: nodes
+    labels: ["PDF", "OCR", "n8n", "JSON", "Odoo"]
   title: "OdooSynapse – KI-gestützte Rechnungsautomatisierung"
   category: ecom
   summary: "OCR-Rechnungserfassung, API-Anbindung an Odoo, n8n-Workflows, Vendor-Management und Monitoring."
@@ -260,6 +286,7 @@
   note: "Hochschulprojekt, kein öffentliches Repo"
 
 - slug: sporthandel-werner
+  illustration: {cmd: "bin/magento setup:upgrade", kind: shop}
   title: "Sporthandel Werner – Magento-2-Onlineshop"
   category: ecom
   summary: "Shop-Prototyp mit Markt-, Wettbewerbs- und Systemanalyse (Teamprojekt)."
@@ -268,6 +295,7 @@
   note: "Hochschulprojekt, kein öffentliches Repo"
 
 - slug: omni-commerce
+  illustration: {cmd: "speak --product 4711", kind: qr}
   title: "Omni-Commerce Fokusprojekt"
   category: ecom
   summary: "Browserbasiert: gibt Produktinfos per QR-Code an Preisschildern als Audio aus."
