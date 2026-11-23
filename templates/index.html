@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+{% import "_macros.html" as m %}
+{% block main %}
+
+<section id="hero" class="hero wrap">
+  <div class="hero-text">
+    <span class="pill"><span class="dot"></span>{{ person.open_to }}</span>
+    <p class="mono accent">{{ person.role }} · {{ person.focus | join(" · ") }}</p>
+    <h1>{{ person.tagline }}</h1>
+    <p class="lead">{{ person.intro }}</p>
+    <div class="cta">
+      <a class="btn primary" href="#featured">Case Studies ansehen</a>
+      <a class="btn" href="lebenslauf/">Lebenslauf</a>
+      <button class="btn ghost" id="tour-start">▶ Kurze Tour</button>
+    </div>
+    <p class="muted small">Zuvor bei {{ person.employers | join(" · ") }}</p>
+  </div>
+  <aside class="hero-card">
+    <div class="term-bar"><span></span><span></span><span></span><em class="mono">profil.yaml</em></div>
+    <dl class="mono">
+      <dt>name</dt><dd>{{ person.name }}</dd>
+      <dt>rolle</dt><dd>{{ person.role }}</dd>
+      <dt>ort</dt><dd>{{ person.location }}</dd>
+      <dt>stack</dt><dd>Python · SQL · SAP · LLMs</dd>
+      <dt>status</dt><dd class="ok">{{ person.status }}</dd>
+      <dt>studium</dt><dd>{{ person.degree_note }}</dd>
+    </dl>
+  </aside>
+</section>
+
+<section class="stats wrap" aria-label="Kennzahlen">
+  {% for s in site.stats %}
+  <div class="stat"><strong>{{ s.value }}</strong><span>{{ s.label }}</span></div>
+  {% endfor %}
+</section>
+
+<section id="featured" class="wrap section">
+  <h2><span class="mono accent">01</span> Ausgewählte Arbeiten</h2>
+  <div class="featured-grid">
+    {% for p in featured %}
+    <article class="card featured">
+      <div class="card-top">
+        <span class="cat cat-{{ p.category }}">{{ p.category_label }}</span>
+        {% if p.badge %}<span class="badge">{{ p.badge }}</span>{% endif %}
+      </div>
+      <h3>{{ p.title }}</h3>
+      {% if p.metric %}<div class="metric"><strong>{{ p.metric.value }}</strong><span>{{ p.metric.label }}</span></div>{% endif %}
+      <p>{{ p.summary }}</p>
+      {% if p.flow %}{{ m.flow(p.flow) }}{% endif %}
+      {{ m.tags(p.tags) }}
+      {{ m.links(p, root) }}
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="projects" class="wrap section">
+  <h2><span class="mono accent">02</span> Alle Projekte</h2>
+  <div class="filters" role="tablist">
+    <button class="filter active" data-filter="all">Alle <em>{{ projects | length }}</em></button>
+    {% for key, label in categories.items() %}
+    <button class="filter" data-filter="{{ key }}">{{ label }} <em>{{ projects | selectattr("category", "equalto", key) | list | length }}</em></button>
+    {% endfor %}
+  </div>
+  <div class="grid" id="project-grid">
+    {% for p in projects if not p.featured %}
+    <article class="card" data-cat="{{ p.category }}">
+      <div class="card-top"><span class="cat cat-{{ p.category }}">{{ p.category_label }}</span>
+        {% if p.metric %}<span class="badge">{{ p.metric.value }} {{ p.metric.label }}</span>{% endif %}</div>
+      <h3>{{ p.title }}</h3>
+      <p>{{ p.summary }}</p>
+      {% if p.flow %}{{ m.flow(p.flow) }}{% endif %}
+      {{ m.tags(p.tags) }}
+      {{ m.links(p, root) }}
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="lab" class="wrap section">
+  <h2><span class="mono accent">03</span> Lab</h2>
+  <p class="muted">Kleine Programme, die direkt im Browser laufen. Python-Logik per Pyodide, mit Unit-Tests.</p>
+  <div class="grid two">
+    {% for l in site.lab %}
+    <a class="card lab" href="{{ l.url }}" target="_blank" rel="noopener">
+      <h3>{{ l.title }} <span class="accent">↗</span></h3>
+      <p>{{ l.desc }}</p>
+      {{ m.tags(l.tags) }}
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="experience" class="wrap section">
+  <h2><span class="mono accent">04</span> Erfahrung</h2>
+  <ol class="timeline">
+    {% for e in site.experience %}
+    <li>
+      <span class="mono muted small">{{ e.period }}</span>
+      <h3>{{ e.role }}</h3>
+      <p class="company">{{ e.company }} · {{ e.place }}</p>
+      <ul class="bullets">{% for b in e.bullets %}<li>{{ b }}</li>{% endfor %}</ul>
+      {{ m.tags(e.tags) }}
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+
+<section id="skills" class="wrap section">
+  <h2><span class="mono accent">05</span> Skills &amp; Nachweise</h2>
+  <div class="grid">
+    {% for g in site.skills %}
+    <div class="card plain"><h3>{{ g.group }}</h3>{{ m.tags(g["items"]) }}</div>
+    {% endfor %}
+    <div class="card plain"><h3>Interessen</h3>{{ m.tags(site.interests) }}</div>
+  </div>
+  <div class="grid two cert-edu">
+    <div>
+      <h3>Zertifikate</h3>
+      <ul class="list">{% for c in site.certifications %}<li><strong>{{ c.name }}</strong><span class="muted"> · {{ c.issuer }}, {{ c.year }}</span></li>{% endfor %}</ul>
+    </div>
+    <div>
+      <h3>Ausbildung</h3>
+      <ul class="list">{% for e in site.education %}<li><strong>{{ e.degree }}</strong><span class="muted"> · {{ e.school }}, {{ e.period }}</span></li>{% endfor %}</ul>
+      <h3>Sprachen</h3>
+      <p>{{ site.languages | join(" · ") }}</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="wrap section contact">
+  <h2><span class="mono accent">06</span> Kontakt</h2>
+  <p class="lead">Suchen Sie jemanden für Data, KI oder Qualität? Schreiben Sie mir.</p>
+  <div class="cta">
+    <a class="btn primary" href="mailto:{{ person.email }}">{{ person.email }}</a>
+    <a class="btn" href="{{ person.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn" href="{{ person.github }}" target="_blank" rel="noopener">GitHub</a>
+    <a class="btn ghost" href="lebenslauf/">Lebenslauf (PDF drucken)</a>
+  </div>
+</section>
+
+<div id="tour" class="tour" hidden>
+  <div class="tour-box" role="dialog" aria-live="polite">
+    <span class="mono small muted" id="tour-count"></span>
+    <h3 id="tour-title"></h3>
+    <p id="tour-text"></p>
+    <div class="tour-ctrl">
+      <button class="btn ghost" id="tour-close">Beenden</button>
+      <button class="btn" id="tour-prev">Zurück</button>
+      <button class="btn primary" id="tour-next">Weiter</button>
+    </div>
+  </div>
+</div>
+<script>window.TOUR = {{ tour_json | safe }};</script>
+{% endblock %}

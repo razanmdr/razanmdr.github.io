@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ person.name }} · {{ person.role }}{% endblock %}</title>
+  <meta name="description" content="{% block desc %}{{ person.tagline }}{% endblock %}">
+  <meta property="og:title" content="{{ self.title() }}">
+  <meta property="og:description" content="{{ self.desc() }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ site.base_url }}">
+  <meta name="twitter:card" content="summary">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ root }}static/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80' font-family='monospace'>&gt;_</text></svg>">
+  <script>try{const t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand mono" href="{{ root }}">dary@jena:~$</a>
+      <nav class="nav-links">
+        {% block navlinks %}
+        <a href="{{ root }}#featured">Case Studies</a>
+        <a href="{{ root }}#projects">Projekte</a>
+        <a href="{{ root }}#lab">Lab</a>
+        <a href="{{ root }}#experience">Erfahrung</a>
+        <a href="{{ root }}#skills">Skills</a>
+        <a href="{{ root }}lebenslauf/">Lebenslauf</a>
+        <a href="{{ root }}#contact">Kontakt</a>
+        {% endblock %}
+      </nav>
+      <button class="icon-btn" id="theme-toggle" aria-label="Farbschema wechseln">◐</button>
+    </div>
+  </header>
+
+  <main>{% block main %}{% endblock %}</main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <span>© 2026 {{ person.name }} · {{ person.location }}</span>
+      <span class="footer-links">
+        <a href="{{ person.github }}">GitHub</a>
+        <a href="{{ person.linkedin }}">LinkedIn</a>
+        <a href="mailto:{{ person.email }}">E-Mail</a>
+      </span>
+      <span class="muted small">Statische Seite, generiert mit Python &amp; Jinja2, gehostet auf GitHub Pages. Keine Cookies, kein Tracking.</span>
+    </div>
+  </footer>
+  <script src="{{ root }}static/js/main.js"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

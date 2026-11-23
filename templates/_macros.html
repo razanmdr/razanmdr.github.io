@@ -1,0 +1,18 @@
+{% macro flow(steps) %}
+<div class="flow" aria-label="Ablauf">
+  {% for s in steps %}<span class="flow-step">{{ s }}</span>{% if not loop.last %}<span class="flow-arrow" aria-hidden="true">→</span>{% endif %}{% endfor %}
+</div>
+{% endmacro %}
+
+{% macro tags(items) %}
+<ul class="tags">{% for t in items %}<li>{{ t }}</li>{% endfor %}</ul>
+{% endmacro %}
+
+{% macro links(p, root) %}
+<div class="card-links">
+  {% if p.case %}<a class="link-strong" href="{{ root }}projects/{{ p.slug }}/">Case Study →</a>{% endif %}
+  {% for l in p.links %}<a href="{{ l.url }}" target="_blank" rel="noopener">{{ l.label }} ↗</a>{% endfor %}
+  {% if p.internal %}<span class="muted small">Intern · kein öffentlicher Code</span>{% endif %}
+  {% if p.note %}<span class="muted small">{{ p.note }}</span>{% endif %}
+</div>
+{% endmacro %}

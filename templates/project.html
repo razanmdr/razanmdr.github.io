@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% import "_macros.html" as m %}
+{% block title %}{{ p.title }} · {{ person.name }}{% endblock %}
+{% block desc %}{{ p.summary | trim }}{% endblock %}
+{% block main %}
+<article class="wrap section case">
+  <a class="muted small" href="{{ root }}#featured">← Zurück zur Übersicht</a>
+  <div class="card-top" style="margin-top:1.5rem">
+    <span class="cat cat-{{ p.category }}">{{ p.category_label }}</span>
+    {% if p.badge %}<span class="badge">{{ p.badge }}</span>{% endif %}
+  </div>
+  <h1>{{ p.title }}</h1>
+  <p class="lead">{{ p.summary }}</p>
+
+  <div class="case-meta">
+    {% if p.metric %}<div class="metric big"><strong>{{ p.metric.value }}</strong><span>{{ p.metric.label }}</span></div>{% endif %}
+    <div><span class="mono muted small">STACK</span>{{ m.tags(p.tags) }}</div>
+  </div>
+
+  {% if p.flow %}<h2>Ablauf</h2>{{ m.flow(p.flow) }}{% endif %}
+
+  {% set labels = {"context": "Kontext", "question": "Fragestellung", "approach": "Vorgehen", "outcome": "Ergebnis", "status": "Status"} %}
+  {% for key, label in labels.items() if p.case[key] %}
+  <h2>{{ label }}</h2>
+  <p>{{ p.case[key] }}</p>
+  {% endfor %}
+
+  <div class="card-links">
+    {% for l in p.links %}<a class="btn" href="{{ l.url }}" target="_blank" rel="noopener">{{ l.label }} ↗</a>{% endfor %}
+    <a class="btn ghost" href="mailto:{{ person.email }}?subject={{ p.title | urlencode }}">Fragen zum Projekt?</a>
+  </div>
+</article>
+{% endblock %}

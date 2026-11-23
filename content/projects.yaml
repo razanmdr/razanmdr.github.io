@@ -1,0 +1,192 @@
+# category: de | ml | ai | ecom
+# featured: true -> erscheint oben als Case Study und bekommt eine eigene Seite
+# flow: Schritte für das Ablaufdiagramm
+# Alle Projekte mit "case" bekommen eine eigene Seite unter /projects/<slug>/
+
+- slug: masterarbeit-function-calling
+  title: "Function Calling bei LLM-Agents im E-Commerce"
+  category: ai
+  featured: true
+  badge: "Masterarbeit · 03/2027"
+  summary: >-
+    Wie zuverlässig wählen LLM-Agents das richtige Tool und extrahieren die
+    richtigen Parameter? Benchmark mit 100 Testfällen, API-Modelle gegen lokale
+    Open-Weight-Modelle, englische und deutsche Schemas und Anfragen.
+  metric: {value: "100", label: "Testfälle im Benchmark"}
+  flow: ["Testfälle (DE/EN)", "Tool-Schemas", "API- & lokale LLMs", "Tool-Auswahl & Parameter", "Auswertung"]
+  tags: ["LLM-Evaluation", "Function Calling", "Schema-Lokalisierung"]
+  links: []
+  case:
+    context: "LLM-Agents im E-Commerce müssen Tools zuverlässig aufrufen, auch wenn Anfrage und Tool-Schema nicht in derselben Sprache vorliegen."
+    question: "Wie beeinflusst die Sprache von Anfrage und Tool-Schema die Tool-Auswahl und die Parameterextraktion?"
+    approach: "Benchmark mit 100 Testfällen; Vergleich von API-Modellen mit lokalen Open-Weight-Modellen über englische und deutsche Schemas und Queries."
+    status: "Laufende Masterarbeit an der EAH Jena, Abschluss voraussichtlich 03/2027."
+
+- slug: jenoptik-liefermonitor
+  title: "Echtzeit-Liefermonitor bei JENOPTIK"
+  category: de
+  featured: true
+  badge: "Bachelorarbeit · intern"
+  summary: >-
+    Live-Überwachung der Auslieferungslogistik: ABAP CDS Views auf SAP S/4HANA
+    als Datenbasis, Live-Dashboards in SAP Analytics Cloud.
+  metric: {value: "Live", label: "Dashboards statt Batch-Reports"}
+  flow: ["SAP S/4HANA", "ABAP CDS Views", "Live-Verbindung", "SAP Analytics Cloud", "Logistik-Team"]
+  tags: ["SAP S/4HANA", "ABAP CDS", "SAP Analytics Cloud"]
+  links: []
+  internal: true
+  case:
+    context: "Bachelorarbeit im Unternehmen. Ziel war eine Live-Sicht auf den Status der Auslieferungen."
+    approach: "Datenmodell mit ABAP CDS Views direkt auf S/4HANA, Live-Dashboards in SAP Analytics Cloud, dazu Performance- und Lasttests."
+    outcome: "Echtzeit-Liefermonitor inklusive Schulung der Anwender."
+    status: "Internes Projekt, Code und Daten nicht öffentlich."
+
+- slug: fraud-detection-monitor
+  title: "Financial Fraud Detection Monitor"
+  category: ml
+  featured: true
+  summary: >-
+    Überwacht ein Betrugserkennungsmodell in Produktion. NannyML (CBPE) schätzt
+    die Modellleistung, bevor echte Labels vorliegen.
+  metric: {value: "94,36 %", label: "Baseline-Accuracy"}
+  flow: ["Referenzdaten", "Modell", "Produktionsdaten", "NannyML CBPE", "Performance-Schätzung"]
+  tags: ["NannyML", "scikit-learn", "Model Monitoring"]
+  links:
+    - {label: "Code", url: "https://github.com/razanmdr/Machine_Learning/tree/main/Monitoring%20A%20Financial%20Fraud%20Detection%20Model"}
+  case:
+    context: "Bei Betrugserkennung kommen echte Labels oft erst Wochen später. Bis dahin ist unklar, ob das Modell noch gut funktioniert."
+    approach: "NannyML mit Confidence-Based Performance Estimation (CBPE), um die Leistung ohne Labels zu schätzen und Verschlechterungen früh zu erkennen."
+    outcome: "Baseline-Accuracy von 94,36 % als Referenz für das Monitoring."
+
+- slug: financebot-rag
+  title: "FinanceBot – RAG für Finanzdokumente"
+  category: ai
+  featured: true
+  summary: >-
+    Beantwortet Fragen zu PDF-, CSV- und Excel-Dokumenten mit
+    Retrieval-Augmented Generation.
+  metric: {value: "3", label: "Dateiformate: PDF, CSV, Excel"}
+  flow: ["Dokumente", "Parsing", "Embeddings", "ChromaDB", "Gemini", "Antwort"]
+  tags: ["RAG", "ChromaDB", "Gemini"]
+  links:
+    - {label: "Code", url: "https://github.com/razanmdr/AI_Proj/tree/main/finance-rag"}
+  case:
+    context: "Finanzdaten liegen verteilt in PDFs, CSVs und Excel-Dateien. Antworten sollen sich auf die Dokumente stützen."
+    approach: "Dokumente werden geparst, als Embeddings in ChromaDB gespeichert und bei jeder Frage als Kontext an Gemini übergeben."
+
+- slug: shopbot
+  title: "ShopBot – KI-Shopping-Assistent"
+  category: ai
+  summary: "Konversationeller Assistent mit Produktsuche und Analytics-Dashboard auf Basis des UCI-Online-Retail-Datensatzes."
+  tags: ["Streamlit", "Gemini API"]
+  links:
+    - {label: "Code", url: "https://github.com/razanmdr/AI_Proj/tree/main/AI-Assisted%20Shopping%20Research"}
+
+- slug: retail-pipeline
+  title: "Retail Data Pipeline"
+  category: de
+  summary: "End-to-End-Pipeline für Walmart-Verkaufsdaten."
+  flow: ["Rohdaten", "Extract", "Transform", "Load"]
+  tags: ["Python", "SQL", "ETL"]
+  links:
+    - {label: "Code", url: "https://github.com/razanmdr/Data_Eng/tree/main/Building%20a%20Retail%20Data%20Pipeline"}
+
+- slug: energy-etl
+  title: "ETL-Pipeline für Energiedaten"
+  category: de
+  summary: "Strommarktdaten des U.S. Department of Energy aus CSV und verschachteltem JSON."
+  flow: ["CSV + JSON", "pandas", "Parquet"]
+  tags: ["pandas", "ETL", "Parquet"]
+  links:
+    - {label: "Code", url: "https://github.com/razanmdr/Data_Eng/tree/main/Powering%20Data%20for%20the%20Department%20of%20Energy%20-%20Building%20an%20ETL%20Pipeline"}
+
+- slug: pyspark-orders
+  title: "Bestelldaten bereinigen mit PySpark"
+  category: de
+  summary: "Bereinigung eines E-Commerce-Bestelldatensatzes mit PySpark."
+  tags: ["PySpark", "Big Data"]
+  links:
+    - {label: "Code", url: "https://github.com/razanmdr/Data_Eng/tree/main/Cleaning%20an%20Orders%20Dataset%20with%20PySpark"}
+
+- slug: dbt-bank-marketing
+  title: "Kampagnendaten modellieren"
+  category: de
+  summary: "Transformation und Bereinigung von Bank-Marketingkampagnen-Daten."
+  tags: ["dbt", "SQL"]
+  links:
+    - {label: "Code", url: "https://github.com/razanmdr/Data_Eng/tree/main/Cleaning%20Bank%20Marketing%20Campaign%20Data"}
+
+- slug: london-travel
+  title: "London Travel Network"
+  category: de
+  summary: "Analyse von zwölf Jahren Transport-for-London-Daten."
+  tags: ["SQL", "Snowflake"]
+  links:
+    - {label: "Code", url: "https://github.com/razanmdr/Data_Eng/tree/main/Exploring%20London%27s%20Travel%20Network"}
+
+- slug: ticket-classifier
+  title: "Service Desk Ticket Classifier"
+  category: ml
+  summary: "CNN-Textklassifikator, von Grund auf trainiert, für fünf Kategorien von Finanzdienstleistungen."
+  metric: {value: "75,6 %", label: "Accuracy"}
+  tags: ["PyTorch", "NLP", "CNN"]
+  links:
+    - {label: "Code", url: "https://github.com/razanmdr/Machine_Learning/tree/main/Service%20Desk%20Ticket%20Classification%20with%20Deep%20Learning"}
+
+- slug: customer-churn
+  title: "Customer Churn Prediction"
+  category: ml
+  summary: "Sechs Klassifikationsmodelle, 10-fache Kreuzvalidierung, Schwellenwert-Optimierung und Kosten-Nutzen-Analyse."
+  tags: ["scikit-learn", "pandas"]
+  links: []
+  note: "Hochschulprojekt, kein öffentliches Repo"
+
+- slug: subscriber-churn
+  title: "Subscriber Churn Prediction"
+  category: ml
+  summary: "Abwanderungsprognose für gezieltes Marketing."
+  tags: ["Klassifikation", "Python"]
+  links:
+    - {label: "Code", url: "https://github.com/razanmdr/Machine_Learning/tree/main/Combating%20Subscriber%20Churn%20with%20Targeted%20Marketing"}
+
+- slug: clothing-classifier
+  title: "E-Commerce Clothing Classifier"
+  category: ml
+  summary: "Klassifiziert Kleidungsstücke (Fashion-MNIST) für E-Commerce-Kategorien."
+  metric: {value: "85,36 %", label: "Accuracy"}
+  tags: ["Keras", "CNN"]
+  links:
+    - {label: "Code", url: "https://github.com/razanmdr/Machine_Learning/tree/main/Building%20an%20E-Commerce%20Clothing%20Classifier%20Model%20with%20Keras"}
+
+- slug: demand-forecasting
+  title: "Demand Forecasting mit PySpark"
+  category: ml
+  summary: "Nachfrageprognose für E-Commerce-Daten."
+  tags: ["PySpark", "Random Forest"]
+  links:
+    - {label: "Code", url: "https://github.com/razanmdr/Machine_Learning/tree/main/Building%20a%20Demand%20Forecasting%20Model"}
+
+- slug: odoosynapse
+  title: "OdooSynapse – KI-gestützte Rechnungsautomatisierung"
+  category: ecom
+  summary: "OCR-Rechnungserfassung, API-Anbindung an Odoo, n8n-Workflows, Vendor-Management und Monitoring."
+  flow: ["Rechnung", "OCR", "n8n", "Odoo"]
+  tags: ["n8n", "Odoo", "OCR"]
+  links: []
+  note: "Hochschulprojekt, kein öffentliches Repo"
+
+- slug: sporthandel-werner
+  title: "Sporthandel Werner – Magento-2-Onlineshop"
+  category: ecom
+  summary: "Shop-Prototyp mit Markt-, Wettbewerbs- und Systemanalyse (Teamprojekt)."
+  tags: ["Magento 2"]
+  links: []
+  note: "Hochschulprojekt, kein öffentliches Repo"
+
+- slug: omni-commerce
+  title: "Omni-Commerce Fokusprojekt"
+  category: ecom
+  summary: "Browserbasiert: gibt Produktinfos per QR-Code an Preisschildern als Audio aus."
+  tags: ["Web Speech API"]
+  links: []
+  note: "Hochschulprojekt, kein öffentliches Repo"

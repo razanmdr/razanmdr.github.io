@@ -1,0 +1,124 @@
+base_url: "https://razanmdr.github.io"
+github_user: "razanmdr"
+
+person:
+  name: "Mochammad Dary Razan"
+  short: "Dary"
+  role: "Data & AI Engineer"
+  location: "Jena, DE"
+  email: "darry.razan@gmail.com"
+  github: "https://github.com/razanmdr"
+  linkedin: "https://www.linkedin.com/in/razanmdr/"
+  status: "Verfügbar ab sofort · Vollzeit"
+  open_to: "Offen für Data-, KI- und QA-Rollen"
+  tagline: "Daten, KI-Agents und Software, auf die man sich verlassen kann."
+  intro: >-
+    Ich baue Datenpipelines, ML-Modelle und datengetriebene KI-Anwendungen und
+    untersuche in meiner Masterarbeit, wie zuverlässig LLM-Agents in der Praxis
+    sind. Hintergrund in SAP S/4HANA BI und Software-QA (ISTQB).
+  focus: ["KI & LLM-Evaluation", "Data & BI", "Quality Engineering"]
+  employers: ["JENOPTIK", "Siemens Energy", "Neue Technologie AG"]
+  degree_note: "M.Sc. E-Commerce (Data/AI), EAH Jena · Abschluss 03/2027"
+
+# Fallback values; repos are refreshed from the GitHub API at build time
+stats:
+  - {key: repos, value: "10+", label: "öffentliche Repos"}
+  - {key: projects, value: "", label: "Projekte im Portfolio"}
+  - {value: "50+", label: "Customer Journeys getestet (Banking)"}
+  - {value: "35", label: "Unit-Tests im Playground"}
+
+experience:
+  - period: "12.2024 – 01.2026"
+    role: "Application & Software Quality Engineer (Werkstudent)"
+    company: "Neue Technologie AG"
+    place: "Erfurt"
+    tags: ["Playwright", "TypeScript", "CI/CD"]
+    bullets:
+      - "Testszenarien für über 50 Customer Journeys in Banking-Anwendungen erstellt"
+      - "Automatisierte E2E-Tests mit Playwright und TypeScript in CI/CD-Pipelines integriert"
+      - "Manuelle Fachtests und Qualitätsreporting"
+  - period: "06.2024 – 09.2024"
+    role: "Data Science (Bachelorand)"
+    company: "JENOPTIK"
+    place: "Jena"
+    tags: ["SAP S/4HANA", "ABAP CDS", "SAP Analytics Cloud"]
+    bullets:
+      - "Echtzeit-Liefermonitor mit ABAP CDS Views auf S/4HANA entwickelt"
+      - "Live-Dashboards in SAP Analytics Cloud aufgebaut"
+      - "Performance- und Lasttests sowie Schulungen der Anwender"
+  - period: "10.2023 – 05.2024"
+    role: "Software- & Anwendungstest (Werkstudent)"
+    company: "JENOPTIK"
+    place: "Jena"
+    tags: ["iOS", "Intune", "Azure AD"]
+    bullets:
+      - "Gerätenahe Tests auf über 50 iOS-Geräten"
+      - "Tests für RFID-basierte Login-Karten"
+      - "Unterstützung der MDM-Integration (Intune / Azure AD) und technische Dokumentation"
+  - period: "07.2022 – 09.2023"
+    role: "Softwareentwicklung & QA (Werkstudent)"
+    company: "Siemens Energy"
+    place: "Erfurt"
+    tags: ["Selenium", ".NET", "Testautomatisierung"]
+    bullets:
+      - "Funktionale und nicht-funktionale Tests"
+      - "Testautomatisierung mit Selenium"
+      - ".NET-Anwendung zur Automatisierung von Test- und Supportprozessen"
+  - period: "04.2021 – 10.2021"
+    role: "Softwareentwicklung (Praktikum)"
+    company: "PT. Halotec Indonesia"
+    place: "Jakarta"
+    tags: ["OCR", "Computer Vision"]
+    bullets:
+      - "OCR-basiertes Smart-Camera-Projekt zur Erkennung von Container-IDs"
+      - "Web- und Mobile-Anwendungen"
+
+skills:
+  - group: "KI & Machine Learning"
+    items: ["Python", "PyTorch", "TensorFlow/Keras", "scikit-learn", "LLM Function Calling", "RAG", "ChromaDB", "Gemini API", "Claude API", "NannyML"]
+  - group: "Data Engineering & BI"
+    items: ["SQL", "PySpark", "pandas", "dbt", "Snowflake", "MongoDB", "ETL", "Tableau", "SAP S/4HANA", "ABAP CDS", "SAP Analytics Cloud"]
+  - group: "Qualität & Automatisierung"
+    items: ["ISTQB", "Testplanung", "Playwright", "Selenium", "Cypress", "Azure DevOps", "CI/CD", "Jira", "Confluence"]
+  - group: "Anwendungsentwicklung"
+    items: ["JavaScript/TypeScript", "React", "Node.js", ".NET/C#", "Streamlit", "n8n"]
+  - group: "Weitere Kenntnisse"
+    items: ["Magento 2", "Shopify", "Shopware", "Odoo", "Salesforce", "HubSpot", "Flutter", "PHP", "Power Platform"]
+
+interests: ["Recommender Systems", "Geospatial AI", "LLM-Evaluation"]
+
+certifications:
+  - {name: "Claude Certified Architect", issuer: "Anthropic", year: "2026"}
+  - {name: "Building with the Claude API", issuer: "Anthropic", year: "2026"}
+  - {name: "Data Science & Data Engineering", issuer: "DataCamp", year: "2025"}
+  - {name: "ISTQB Certified Tester", issuer: "ISTQB", year: "2023"}
+  - {name: "Google Data Analytics · Project Management", issuer: "Coursera", year: "2023"}
+  - {name: "Data Science: Machine Learning & Data Mining", issuer: "DT-Sense", year: "2022"}
+  - {name: "Full-Stack Web & Software Testing Bootcamp", issuer: "Udemy", year: "2022"}
+
+education:
+  - {degree: "M.Sc. E-Commerce, Schwerpunkt Data/AI", school: "Ernst-Abbe-Hochschule Jena", period: "bis 03/2027"}
+  - {degree: "B.Sc. Business Engineering (E-Commerce)", school: "Ernst-Abbe-Hochschule Jena", period: "abgeschlossen"}
+
+languages:
+  - "Deutsch (C1)"
+  - "Englisch (C1)"
+  - "Bahasa Indonesia (Muttersprache)"
+
+lab:
+  - title: "Snake – Python im Browser"
+    desc: "1–2 Spieler. Spiellogik in Python, läuft per Pyodide direkt im Browser. 12 Unit-Tests."
+    tags: ["Python", "Pyodide", "JS"]
+    url: "https://razanmdr.github.io/playground/snake/"
+  - title: "Schach-Regelwerk"
+    desc: "OOP-Figuren und Validierungskette für Züge, mit Testmodus im Browser. 23 Unit-Tests."
+    tags: ["Python", "OOP", "unittest"]
+    url: "https://razanmdr.github.io/playground/chess/"
+
+tour:
+  - {target: "#hero", title: "Hallo, ich bin Dary", text: "Data & AI Engineer aus Jena, mit QA-Hintergrund. Diese Tour dauert etwa eine Minute."}
+  - {target: "#featured", title: "Ausgewählte Arbeiten", text: "Vier Case Studies mit Kennzahl, Ablauf und Links zu Code oder Details."}
+  - {target: "#projects", title: "Alle Projekte", text: "Nach Bereich filterbar: Data Engineering, Machine Learning, KI & LLM, E-Commerce."}
+  - {target: "#lab", title: "Lab", text: "Kleine Programme, die direkt im Browser laufen, inklusive Unit-Tests."}
+  - {target: "#experience", title: "Erfahrung", text: "Werkstudent bei JENOPTIK, Siemens Energy und Neue Technologie AG."}
+  - {target: "#contact", title: "Kontakt", text: "Lebenslauf ansehen, E-Mail schreiben oder auf LinkedIn vernetzen."}
