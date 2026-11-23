@@ -181,6 +181,27 @@
   links:
     - {label: "Code", url: "https://github.com/razanmdr/Machine_Learning/tree/main/Service%20Desk%20Ticket%20Classification%20with%20Deep%20Learning"}
 
+- slug: retail-customer-analytics
+  visual: image
+  visual_image: {src: "static/img/retail-segmente.webp", alt: "Anteil der Steigerer, Halter und Reduzierer (Analyse-Output)"}
+  title: "Retail Customer Analytics: Wer wächst, wer geht, wirken Kampagnen?"
+  category: da
+  featured: true
+  summary: >-
+    1,47 Mio. Transaktionen von 2.469 Haushalten (Dunnhumby/84.51° Complete
+    Journey): Segmentierung in Steigerer, Halter und Reduzierer,
+    Kampagnenwirkung mit Kontrollgruppe und Einfluss von Einkommen und Kindern.
+  metric: {value: "+44 %", label: "Jahresumsatz bei Einkommen > 75K vs. < 35K (p < 0,001)"}
+  flow: ["1,47 Mio. Transaktionen", "Segmentierung H1 vs. H2", "Kampagnen-DiD", "Welch-t-Tests", "Empfehlungen"]
+  tags: ["pandas", "Difference-in-Differences", "Segmentierung", "SciPy"]
+  links:
+    - {label: "Code", url: "https://github.com/razanmdr/Data-Analyst/tree/master/Retail-Customer-Analytics-Complete-Journey"}
+  case:
+    context: "Ein Lebensmittelhändler mit stagnierendem Wachstum besitzt Transaktions-, Demografie- und Kampagnendaten, nutzt sie aber kaum. Konzept gemeinsam mit Timur Manuev und Mohamed Saci Hameurreras im Kurs Customer Experience (Prof. Dr. Marek Opuszko) entwickelt, Analyse anschließend eigenständig umgesetzt."
+    approach: "Segmentierung der 1.684 dauerhaft aktiven Haushalte nach Ausgabenveränderung 2. vs. 1. Halbjahr (±10 %). Wirkung von 19 Kampagnen (Type A/B/C) per Difference-in-Differences gegen nicht angesprochene Haushalte. Einkommens- und Kindergruppen mit Welch-t-Tests und Warenkorbanteilen verglichen."
+    outcome: "Nur 18 % der Haushalte halten ihre Ausgaben stabil; Reduzierer verlieren rund 311 Tsd. $, fast so viel wie Steigerer hinzugewinnen (356 Tsd. $). Keine Kampagnenart zeigt einen messbaren Mehrumsatz gegenüber der Kontrollgruppe – trotz bis zu 15 % Coupon-Einlösung. Haushalte mit > 75K Einkommen geben 44 % mehr aus als < 35K, Haushalte mit Kindern 11 % mehr."
+    status: "Empfehlung: Rückgewinnung der Reduzierer priorisieren und Kampagnen künftig mit randomisierter Kontrollgruppe messen."
+
 - slug: wm-churn-prediction
   visual: image
   visual_image: {src: "static/img/wm-churn-threshold.webp", alt: "Gewinn in Abhängigkeit vom Threshold (Skript-Output)"}
