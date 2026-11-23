@@ -46,7 +46,7 @@
   <div class="featured-grid">
     {% for p in featured %}
     <article class="card featured{% if loop.first %} wide{% elif loop.last and featured|length is even %} wide alt{% endif %}">
-      {% if p.visual %}<div class="feat-visual">{{ v.render(p.visual, p) }}</div>{% endif %}
+      {% if p.visual %}<div class="feat-visual">{{ v.render(p.visual, p, root) }}</div>{% endif %}
       <div class="feat-body">
       <div class="card-top">
         <span class="cat cat-{{ p.category }}">{{ p.category_label }}</span>

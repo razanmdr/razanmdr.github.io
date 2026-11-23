@@ -102,6 +102,26 @@
     approach: "Case Folding, Entfernen von Stoppwörtern, Satzzeichen, Ziffern und Nicht-ASCII-Zeichen, danach TF-IDF. Verglichen wurden SVM, Naive Bayes, Decision Tree, Random Forest und ein Multi-Layer Perceptron."
     outcome: "SVM erreicht mit 70 % die höchste Accuracy, knapp vor Random Forest (69 %). Die neutrale und die positive Klasse sind wegen des Klassenungleichgewichts deutlich schwerer zu erkennen; Naive Bayes sagt fast nur ‚negativ‘ voraus."
 
+- slug: bank-debt-recovery
+  visual: image
+  visual_image: {src: "static/img/bank-debts.webp", alt: "Tatsächliche vs. erwartete Rückzahlung um die 1.000-$-Schwelle (Notebook-Output)"}
+  title: "Lohnt sich die teurere Inkasso-Strategie?"
+  category: da
+  featured: true
+  summary: >-
+    Regression Discontinuity auf 1.882 Bankkonten: Bringt die intensivere
+    Inkasso-Strategie ab 1.000 $ erwarteter Rückzahlung mehr ein, als sie kostet?
+  metric: {value: "+278 $", label: "Mehrertrag pro Kunde (p < 0,001)"}
+  flow: ["Schwelle 1.000 $", "Balance-Tests", "OLS + Indikator", "Robustheits-Check"]
+  tags: ["Regression Discontinuity", "statsmodels", "SciPy"]
+  links:
+    - {label: "Code", url: "https://github.com/razanmdr/Data-Analyst/tree/master/Which-Debts-Are-Worth-the-Bank's-Effort"}
+  case:
+    context: "Eine Bank setzt ab 1.000 $ erwarteter Rückzahlung eine intensivere Inkasso-Strategie ein, die pro Kunde 50 $ mehr kostet."
+    question: "Ist der Sprung bei der tatsächlichen Rückzahlung an der Schwelle größer als die Mehrkosten?"
+    approach: "Vergleich der Kunden knapp unter und über der Schwelle (900–1.100 $, 183 Kunden): Kruskal-Wallis-Test für Alter, Chi-Quadrat-Test für Geschlecht. Danach OLS-Regression mit Indikator für ≥ 1.000 $ und ein Robustheits-Check mit engerem Fenster (950–1.050 $)."
+    outcome: "Alter (p = 0,063) und Geschlecht (p = 0,54) unterscheiden sich nicht signifikant, die Gruppen sind also vergleichbar. Die teurere Strategie bringt +278 $ pro Kunde (p < 0,001), im engeren Fenster +287 $ (p = 0,012) – deutlich mehr als die 50 $ Mehrkosten."
+
 - slug: shopbot
   title: "ShopBot – KI-Shopping-Assistent"
   category: ai
@@ -227,7 +247,7 @@
   summary: "Wirkt ein späteres Level-Gate auf die Spielerbindung? Auswertung der 1- und 7-Tages-Retention mit Bootstrapping."
   tags: ["A/B-Testing", "Bootstrapping", "pandas"]
   links:
-    - {label: "Code", url: "https://github.com/razanmdr/Data-Analyst/tree/main/Mobile-Gmaes-AB-Testing-with-Cookie-Cats"}
+    - {label: "Code", url: "https://github.com/razanmdr/Data-Analyst/tree/master/Mobile-Gmaes-AB-Testing-with-Cookie-Cats"}
 
 - slug: house-price-eda
   title: "House Price EDA"
@@ -236,7 +256,7 @@
   summary: "Explorative Analyse von Immobilienpreisen: Verteilungen, Zusammenhänge und Ausreißer."
   tags: ["EDA", "seaborn", "pandas"]
   links:
-    - {label: "Code", url: "https://github.com/razanmdr/Data-Analyst/tree/main/House-price-EDA"}
+    - {label: "Code", url: "https://github.com/razanmdr/Data-Analyst/tree/master/House-price-EDA"}
 
 - slug: fifa21-eda
   title: "FIFA 21 EDA"
@@ -245,7 +265,7 @@
   summary: "Spielerdaten aus FIFA 21: Herkunft, Altersverteilung und wie Rating und Potenzial mit dem Alter zusammenhängen."
   tags: ["EDA", "Visualisierung", "pandas"]
   links:
-    - {label: "Code", url: "https://github.com/razanmdr/Data-Analyst/tree/main/FIFA-21-EDA"}
+    - {label: "Code", url: "https://github.com/razanmdr/Data-Analyst/tree/master/FIFA-21-EDA"}
 
 - slug: netflix-analysis
   title: "Netflix-Filmlängen 2011–2020"
@@ -254,4 +274,40 @@
   summary: "Werden Netflix-Filme kürzer? Analyse der Filmlängen nach Erscheinungsjahr und Genre."
   tags: ["pandas", "matplotlib"]
   links:
-    - {label: "Code", url: "https://github.com/razanmdr/Data-Analyst/tree/main/Investigating-Netflix-Movies-and-Guest-Stars-in-The-Office"}
+    - {label: "Code", url: "https://github.com/razanmdr/Data-Analyst/tree/master/Investigating-Netflix-Movies-and-Guest-Stars-in-The-Office"}
+
+- slug: android-app-market
+  title: "Android App Market auf Google Play"
+  category: da
+  image: {src: "static/img/android-apps.webp", alt: "App-Rating vs. App-Größe (Notebook-Output)", plot: true}
+  summary: "Marktanalyse von 9.659 Apps in 33 Kategorien: Bewertungen, Größe, Preis, Free vs. Paid und Stimmung der Nutzerbewertungen."
+  tags: ["Data Cleaning", "Plotly", "Sentiment"]
+  links:
+    - {label: "Code", url: "https://github.com/razanmdr/Data-Analyst/tree/master/The%20Android-App-Market-on-Google-Play"}
+
+- slug: nobel-prize
+  title: "Nobelpreisträger 1901–2016"
+  category: da
+  image: {src: "static/img/nobel.webp", alt: "Anteil in den USA geborener Preisträger pro Jahrzehnt (Notebook-Output)", plot: true}
+  summary: "911 Nobelpreise: Herkunft, Geschlecht, Mehrfachpreisträger und wie sich das Alter der Preisträger über die Zeit verändert."
+  tags: ["EDA", "Zeitreihen", "seaborn"]
+  links:
+    - {label: "Code", url: "https://github.com/razanmdr/Data-Analyst/tree/master/A-Visual-History-of-Nobel-Prize-Winners"}
+
+- slug: super-bowl-tv
+  title: "Super Bowl: TV-Quoten & Werbekosten"
+  category: da
+  image: {src: "static/img/super-bowl.webp", alt: "Zuschauer, Haushaltsrating und Werbekosten über die Zeit (Notebook-Output)", plot: true}
+  summary: "52 Super Bowls: Spielergebnisse, Zuschauerzahlen, Werbekosten (42.500 $ → 5 Mio. $) und Halftime-Shows."
+  tags: ["EDA", "pandas", "seaborn"]
+  links:
+    - {label: "Code", url: "https://github.com/razanmdr/Data-Analyst/tree/master/Analyzing-TV-Data"}
+
+- slug: scala-github-history
+  title: "GitHub-Historie der Programmiersprache Scala"
+  category: da
+  image: {src: "static/img/scala-github.webp", alt: "Pull Requests pro Monat (Notebook-Output)", plot: true}
+  summary: "6.200 Pull Requests von 467 Beitragenden: Projektaktivität und wer die Experten für eine bestimmte Datei sind."
+  tags: ["Data Wrangling", "Zeitreihen", "pandas"]
+  links:
+    - {label: "Code", url: "https://github.com/razanmdr/Data-Analyst/tree/master/The-GitHub-History-of-the-Scala-Language"}

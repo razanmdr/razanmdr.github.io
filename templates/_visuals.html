@@ -74,6 +74,11 @@
 </div>
 {% endmacro %}
 
-{% macro render(name, p=None) %}
-{% if name == "thesis" %}{{ thesis() }}{% elif name == "dashboard" %}{{ dashboard() }}{% elif name == "monitoring" %}{{ monitoring() }}{% elif name == "rag" %}{{ rag() }}{% elif name == "models" %}{{ models(p) }}{% endif %}
+{% macro image(p, root) %}
+<figure class="viz viz-img"><img src="{{ root }}{{ p.visual_image.src }}" alt="{{ p.visual_image.alt }}" loading="lazy"></figure>
+<span class="viz-note">Echter Notebook-Output</span>
+{% endmacro %}
+
+{% macro render(name, p=None, root="") %}
+{% if name == "thesis" %}{{ thesis() }}{% elif name == "dashboard" %}{{ dashboard() }}{% elif name == "monitoring" %}{{ monitoring() }}{% elif name == "rag" %}{{ rag() }}{% elif name == "models" %}{{ models(p) }}{% elif name == "image" %}{{ image(p, root) }}{% endif %}
 {% endmacro %}

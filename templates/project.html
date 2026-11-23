@@ -12,7 +12,7 @@
   </div>
   <h1>{{ p.title }}</h1>
   <p class="lead">{{ p.summary }}</p>
-  {% if p.visual %}<div class="feat-visual case-visual">{{ v.render(p.visual, p) }}</div>{% endif %}
+  {% if p.visual %}<div class="feat-visual case-visual">{{ v.render(p.visual, p, root) }}</div>{% endif %}
 
   <div class="case-meta">
     {% if p.metric %}<div class="metric big"><strong>{{ p.metric.value }}</strong><span>{{ p.metric.label }}</span></div>{% endif %}
