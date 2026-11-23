@@ -20,7 +20,7 @@
     <div class="term-bar"><span></span><span></span><span></span><em class="mono">profil.yaml</em></div>
     {% if person.photo %}
     <div class="photo-wrap">
-      <img class="photo" src="{{ person.photo }}" alt="Foto von {{ person.name }}" width="480" height="480">
+      <img class="photo" src="{{ person.photo if person.photo.startswith('http') else root ~ person.photo }}" alt="Foto von {{ person.name }}" width="480" height="480">
       <span class="photo-tag mono">{{ person.name }} · {{ person.role }}</span>
     </div>
     {% endif %}
