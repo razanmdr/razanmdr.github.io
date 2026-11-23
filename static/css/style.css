@@ -294,3 +294,6 @@ body { background-image:
 [data-theme="dark"] .thumb.plot, [data-theme="dark"] .viz-img img {
   filter: invert(.9) hue-rotate(180deg) saturate(1.15) brightness(.95);
 }
+
+[data-theme="dark"] .viz-img.photo-img img { filter: none; }
+.viz-img.photo-img img { background: transparent; padding: 0; border: 0; max-height: 320px; }

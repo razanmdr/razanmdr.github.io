@@ -75,8 +75,8 @@
 {% endmacro %}
 
 {% macro image(p, root) %}
-<figure class="viz viz-img"><img src="{{ root }}{{ p.visual_image.src }}" alt="{{ p.visual_image.alt }}" loading="lazy"></figure>
-<span class="viz-note">Echter Analyse-Output</span>
+<figure class="viz viz-img{% if p.visual_image.photo %} photo-img{% endif %}"><img src="{{ root }}{{ p.visual_image.src }}" alt="{{ p.visual_image.alt }}" loading="lazy"></figure>
+<span class="viz-note">{{ p.visual_image.note or "Echter Analyse-Output" }}</span>
 {% endmacro %}
 
 {% macro render(name, p=None, root="") %}

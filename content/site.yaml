@@ -107,6 +107,10 @@ languages:
   - "Bahasa Indonesia (Muttersprache)"
 
 lab:
+  - title: "Talking Label – Live-Demo"
+    desc: "Produktinfos per Sprachausgabe: Präferenz wählen und auf Deutsch anhören. Am besten auf dem Handy öffnen."
+    tags: ["JavaScript", "Web Speech API"]
+    url: "https://omnilabel.netlify.app/?produkt=protein"
   - title: "Snake – Python im Browser"
     desc: "1–2 Spieler. Spiellogik in Python, läuft per Pyodide direkt im Browser. 12 Unit-Tests."
     tags: ["Python", "Pyodide", "JS"]
