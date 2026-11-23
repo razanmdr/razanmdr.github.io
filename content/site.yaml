@@ -108,7 +108,7 @@ languages:
 
 lab:
   - title: "Talking Label – Live-Demo"
-    desc: "Produktinfos per Sprachausgabe: Präferenz wählen und auf Deutsch anhören. Am besten auf dem Handy öffnen."
+    desc: "Produktinfos per Sprachausgabe in vier Sprachen, Fragen per Mikrofon. Am besten auf dem Handy öffnen."
     tags: ["JavaScript", "Web Speech API"]
     url: "https://omnilabel.netlify.app/?produkt=protein"
   - title: "Snake – Python im Browser"

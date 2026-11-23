@@ -296,25 +296,25 @@
 
 - slug: talking-label
   visual: image
-  visual_image: {photo: true, note: "Prototyp & Regaletikett", src: "static/img/talking-label.webp", alt: "Elektronisches Regaletikett mit QR-Code und Talking-Label-App mit Allergen-Auskunft"}
+  visual_image: {photo: true, note: "Regaletikett · Englisch · Arabisch (RTL)", src: "static/img/talking-label.webp", alt: "Elektronisches Regaletikett mit QR-Code und Talking-Label-App auf Englisch und Arabisch"}
   title: "Talking Label – Produktinfos per Sprache im Smart Store"
   category: ecom
   featured: true
   badge: "Omni-Commerce · EAH Jena"
   summary: >-
-    QR-Code am elektronischen Regaletikett scannen, Frage wählen (vegan? Allergene?
-    haltbar bis?) und die Antwort auf Deutsch anhören – ohne App, ohne Personal.
-    Produktdaten pflegt der Händler in Google Sheets.
+    QR-Code am elektronischen Regaletikett scannen, Frage wählen oder per Sprache
+    stellen (vegan? Allergene? haltbar bis?) und die Antwort anhören – auf Deutsch,
+    Englisch, Spanisch oder Arabisch, ohne App und ohne Personal.
   metric: {value: "4,8 / 5", label: "Verständlichkeit der Sprachausgabe (Nutzertest, n = 5)"}
-  flow: ["QR am ESL", "Browser", "Präferenz wählen", "Web Speech API", "Google Sheets"]
-  tags: ["JavaScript", "Web Speech API", "Google Sheets", "Netlify", "Barrierefreiheit"]
+  flow: ["QR am ESL", "Browser · 4 Sprachen", "Sprachfrage", "Netlify Function", "Gemini", "Keyword-Fallback"]
+  tags: ["JavaScript", "Web Speech API", "Gemini", "Netlify Functions", "Google Sheets", "Barrierefreiheit"]
   links:
     - {label: "Live-Demo", url: "https://omnilabel.netlify.app/?produkt=protein"}
     - {label: "Code", url: "https://github.com/razanmdr/talking-label"}
   case:
     context: "Im Smart Store zeigt das elektronische Regaletikett nur Name, Preis und Größe. Allergene, Vegan-/Halal-Status, Nährwerte und Haltbarkeit fehlen – und der QR-Code auf dem Label führt ins Leere."
-    approach: "Design Science Research: Problemanalyse durch Beobachtung, Prototyp als einzelne Webseite mit Web Speech API (automatische Wahl der besten deutschen Stimme), zwei Nutzergruppen (Erstkäufer, Stammkunde) und Datenpflege über eine als CSV veröffentlichte Google-Tabelle mit Offline-Fallback. Ein früheres WebAR-Konzept wurde zugunsten der Einfachheit verworfen."
-    outcome: "Nutzertest mit fünf Studierenden (Skala 1–5): Sprachausgabe 4,8, Verständlichkeit 4,6, Vollständigkeit 4,6, Geschwindigkeit 4,2. Geschwindigkeit ist der Ansatzpunkt für die nächste Iteration."
+    approach: "Design Science Research: Problemanalyse durch Beobachtung, Prototyp als einzelne Webseite mit Web Speech API, zwei Nutzergruppen (Erstkäufer, Stammkunde) und Datenpflege über eine als CSV veröffentlichte Google-Tabelle. Weiterentwicklung: vier Sprachen inkl. Arabisch mit RTL-Layout und Sprachfragen, die eine Netlify Function an Gemini weiterleitet – mit strengem Prompt, der nur die Produktdaten zulässt (wichtig bei Allergenen), API-Key nur serverseitig und automatischem Keyword-Fallback. Ein früheres WebAR-Konzept wurde zugunsten der Einfachheit verworfen."
+    outcome: "Nutzertest der ersten, deutschsprachigen Version mit fünf Studierenden (Skala 1–5): Sprachausgabe 4,8, Verständlichkeit 4,6, Vollständigkeit 4,6, Geschwindigkeit 4,2. Die Sprachfrage-Funktion setzt am schwächsten Punkt, der Geschwindigkeit, an; die mehrsprachige Version ist noch nicht evaluiert."
     status: "Forschungsprojekt im SoSe 2026, betreut von Prof. Dr. Andrej Werner. Nächste Schritte: Anbindung an echte ESL, größerer Usability-Test, KI-basierte Sprachausgabe."
 - slug: ab-testing-cookie-cats
   title: "A/B-Test: Mobile Game Cookie Cats"
