@@ -1,0 +1,79 @@
+{# Visual panels for featured cards. All are schematic, labelled as such. #}
+
+{% macro thesis() %}
+<div class="viz viz-thesis">
+  <div class="chat">
+    <div class="bubble user"><span class="lang">DE</span>Zeig mir Laufschuhe unter 100 €</div>
+    <div class="bubble user"><span class="lang">EN</span>Show me running shoes under €100</div>
+  </div>
+  <div class="viz-arrow">↓ Tool-Aufruf</div>
+<pre class="code"><span class="fn">search_products</span>(
+  category=<span class="str">"running_shoes"</span>,
+  max_price=<span class="num">100</span>,
+  currency=<span class="str">"EUR"</span>
+)</pre>
+  <div class="checks"><span>✓ Tool-Auswahl</span><span>✓ Parameter</span><span>API vs. lokal</span></div>
+  <span class="viz-note">Beispiel-Testfall · illustrativ</span>
+</div>
+{% endmacro %}
+
+{% macro dashboard() %}
+<div class="viz viz-dash">
+  <div class="dash-head"><span class="live"><i></i>LIVE</span><span class="mono small muted">Liefermonitor · SAC</span></div>
+  <div class="dash-tiles">
+    <div><span>Pünktlich</span><b style="--w:78%"></b></div>
+    <div><span>Unterwegs</span><b style="--w:46%"></b></div>
+    <div><span>Verzögert</span><b class="warn" style="--w:14%"></b></div>
+  </div>
+  <svg class="dash-bars" viewBox="0 0 240 60" preserveAspectRatio="none" aria-hidden="true">
+    {% for h in [30,42,25,48,38,52,44,56,40,50,46,58] %}
+    <rect x="{{ loop.index0 * 20 + 3 }}" y="{{ 60 - h }}" width="14" height="{{ h }}" rx="2"/>
+    {% endfor %}
+  </svg>
+  <span class="viz-note">Schema · Original-Dashboard intern</span>
+</div>
+{% endmacro %}
+
+{% macro monitoring() %}
+<div class="viz viz-mon">
+  <svg viewBox="0 0 300 130" aria-hidden="true">
+    <line class="grid" x1="0" y1="30" x2="300" y2="30"/><line class="grid" x1="0" y1="65" x2="300" y2="65"/><line class="grid" x1="0" y1="100" x2="300" y2="100"/>
+    <line class="split" x1="120" y1="8" x2="120" y2="122"/>
+    <text x="6" y="16">Referenz</text><text x="128" y="16">Produktion (ohne Labels)</text>
+    <line class="thresh" x1="0" y1="88" x2="300" y2="88"/>
+    <text class="t-thresh" x="6" y="84">Schwelle</text>
+    <polyline class="line" points="0,42 20,40 40,44 60,39 80,42 100,40 120,41 140,43 160,46 180,50 200,57 220,66 240,79 260,94 280,99 300,103"/>
+    <circle class="alert" cx="260" cy="94" r="5"/>
+  </svg>
+  <div class="mon-legend"><span><i class="l1"></i>CBPE-Schätzung</span><span><i class="l2"></i>Alert</span></div>
+  <span class="viz-note">Schematische Darstellung</span>
+</div>
+{% endmacro %}
+
+{% macro rag() %}
+<div class="viz viz-rag">
+  <div class="docs"><span>PDF</span><span>CSV</span><span>XLSX</span></div>
+  <div class="viz-arrow">↓ Embeddings · ChromaDB</div>
+  <div class="bubble user">Wie haben sich die Ausgaben im Quartal entwickelt?</div>
+  <div class="bubble bot">Laut Bericht sind die Ausgaben gestiegen … <span class="src">Quelle: bericht.pdf · S. 4</span></div>
+  <span class="viz-note">Beispiel-Dialog · illustrativ</span>
+</div>
+{% endmacro %}
+
+{% macro models(p) %}
+<div class="viz viz-models">
+  <div class="mono small muted">Accuracy · Testmenge n = 2.775</div>
+  {% for m in p.models %}
+  <div class="mrow{% if loop.first %} best{% endif %}">
+    <span>{{ m.name }}</span>
+    <div class="mbar"><b style="--w:{{ ((m.acc - 50) / 25 * 100) | round }}%"></b></div>
+    <em>{{ m.acc }} %</em>
+  </div>
+  {% endfor %}
+  <span class="viz-note">Echte Ergebnisse · Achse ab 50 %</span>
+</div>
+{% endmacro %}
+
+{% macro render(name, p=None) %}
+{% if name == "thesis" %}{{ thesis() }}{% elif name == "dashboard" %}{{ dashboard() }}{% elif name == "monitoring" %}{{ monitoring() }}{% elif name == "rag" %}{{ rag() }}{% elif name == "models" %}{{ models(p) }}{% endif %}
+{% endmacro %}

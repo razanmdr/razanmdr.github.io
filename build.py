@@ -18,6 +18,7 @@ OUT = ROOT / "_site"
 
 CATEGORIES = {
     "de": "Data Engineering & BI",
+    "da": "Data Analytics",
     "ml": "Machine Learning",
     "ai": "KI & LLM",
     "ecom": "E-Commerce & Digitalisierung",

@@ -1,9 +1,10 @@
-# category: de | ml | ai | ecom
+# category: de | da | ml | ai | ecom
 # featured: true -> erscheint oben als Case Study und bekommt eine eigene Seite
 # flow: Schritte für das Ablaufdiagramm
 # Alle Projekte mit "case" bekommen eine eigene Seite unter /projects/<slug>/
 
 - slug: masterarbeit-function-calling
+  visual: thesis
   title: "Function Calling bei LLM-Agents im E-Commerce"
   category: ai
   featured: true
@@ -23,6 +24,7 @@
     status: "Laufende Masterarbeit an der EAH Jena, Abschluss voraussichtlich 03/2027."
 
 - slug: jenoptik-liefermonitor
+  visual: dashboard
   title: "Echtzeit-Liefermonitor bei JENOPTIK"
   category: de
   featured: true
@@ -42,6 +44,7 @@
     status: "Internes Projekt, Code und Daten nicht öffentlich."
 
 - slug: fraud-detection-monitor
+  visual: monitoring
   title: "Financial Fraud Detection Monitor"
   category: ml
   featured: true
@@ -59,6 +62,7 @@
     outcome: "Baseline-Accuracy von 94,36 % als Referenz für das Monitoring."
 
 - slug: financebot-rag
+  visual: rag
   title: "FinanceBot – RAG für Finanzdokumente"
   category: ai
   featured: true
@@ -73,6 +77,30 @@
   case:
     context: "Finanzdaten liegen verteilt in PDFs, CSVs und Excel-Dateien. Antworten sollen sich auf die Dokumente stützen."
     approach: "Dokumente werden geparst, als Embeddings in ChromaDB gespeichert und bei jeder Frage als Kontext an Gemini übergeben."
+
+- slug: sentiment-analysis
+  visual: models
+  title: "Sentiment-Analyse von Social-Media-Daten"
+  category: ml
+  featured: true
+  summary: >-
+    Klassifiziert Tweets zur GOP-Debatte als negativ, neutral oder positiv.
+    Textvorverarbeitung, TF-IDF und ein Vergleich von fünf ML-Modellen.
+  metric: {value: "70 %", label: "Accuracy (SVM, bestes von 5 Modellen)"}
+  models:
+    - {name: "SVM", acc: 70}
+    - {name: "Random Forest", acc: 69}
+    - {name: "MLP", acc: 66}
+    - {name: "Naive Bayes", acc: 65}
+    - {name: "Decision Tree", acc: 61}
+  flow: ["Tweets", "Bereinigung", "TF-IDF", "5 Modelle", "Vergleich"]
+  tags: ["scikit-learn", "NLP", "TF-IDF"]
+  links:
+    - {label: "Code", url: "https://github.com/razanmdr/Sentiment-Analysis-With-Machine-Learning"}
+  case:
+    context: "Tweets zur GOP-Debatte, drei Klassen: negativ, neutral, positiv. Testmenge mit 2.775 Tweets, davon rund 62 % negativ."
+    approach: "Case Folding, Entfernen von Stoppwörtern, Satzzeichen, Ziffern und Nicht-ASCII-Zeichen, danach TF-IDF. Verglichen wurden SVM, Naive Bayes, Decision Tree, Random Forest und ein Multi-Layer Perceptron."
+    outcome: "SVM erreicht mit 70 % die höchste Accuracy, knapp vor Random Forest (69 %). Die neutrale und die positive Klasse sind wegen des Klassenungleichgewichts deutlich schwerer zu erkennen; Naive Bayes sagt fast nur ‚negativ‘ voraus."
 
 - slug: shopbot
   title: "ShopBot – KI-Shopping-Assistent"
@@ -150,6 +178,7 @@
     - {label: "Code", url: "https://github.com/razanmdr/Machine_Learning/tree/main/Combating%20Subscriber%20Churn%20with%20Targeted%20Marketing"}
 
 - slug: clothing-classifier
+  image: {src: "static/img/fashion-mnist.webp", alt: "Beispielbilder aus Fashion-MNIST (Notebook-Output)"}
   title: "E-Commerce Clothing Classifier"
   category: ml
   summary: "Klassifiziert Kleidungsstücke (Fashion-MNIST) für E-Commerce-Kategorien."
@@ -190,3 +219,39 @@
   tags: ["Web Speech API"]
   links: []
   note: "Hochschulprojekt, kein öffentliches Repo"
+
+- slug: ab-testing-cookie-cats
+  title: "A/B-Test: Mobile Game Cookie Cats"
+  category: da
+  image: {src: "static/img/ab-testing.webp", alt: "Bootstrap-Verteilungen der 1-Tages-Retention je Testgruppe (Notebook-Output)", plot: true}
+  summary: "Wirkt ein späteres Level-Gate auf die Spielerbindung? Auswertung der 1- und 7-Tages-Retention mit Bootstrapping."
+  tags: ["A/B-Testing", "Bootstrapping", "pandas"]
+  links:
+    - {label: "Code", url: "https://github.com/razanmdr/Data-Analyst/tree/main/Mobile-Gmaes-AB-Testing-with-Cookie-Cats"}
+
+- slug: house-price-eda
+  title: "House Price EDA"
+  category: da
+  image: {src: "static/img/house-price.webp", alt: "Verkaufspreis nach Grundstücksbreite (Notebook-Output)", plot: true}
+  summary: "Explorative Analyse von Immobilienpreisen: Verteilungen, Zusammenhänge und Ausreißer."
+  tags: ["EDA", "seaborn", "pandas"]
+  links:
+    - {label: "Code", url: "https://github.com/razanmdr/Data-Analyst/tree/main/House-price-EDA"}
+
+- slug: fifa21-eda
+  title: "FIFA 21 EDA"
+  category: da
+  image: {src: "static/img/fifa21.webp", alt: "Overall-Rating und Alter (Notebook-Output)", plot: true}
+  summary: "Spielerdaten aus FIFA 21: Herkunft, Altersverteilung und wie Rating und Potenzial mit dem Alter zusammenhängen."
+  tags: ["EDA", "Visualisierung", "pandas"]
+  links:
+    - {label: "Code", url: "https://github.com/razanmdr/Data-Analyst/tree/main/FIFA-21-EDA"}
+
+- slug: netflix-analysis
+  title: "Netflix-Filmlängen 2011–2020"
+  category: da
+  image: {src: "static/img/netflix.webp", alt: "Durchschnittliche Filmlänge pro Jahr (Notebook-Output)", plot: true}
+  summary: "Werden Netflix-Filme kürzer? Analyse der Filmlängen nach Erscheinungsjahr und Genre."
+  tags: ["pandas", "matplotlib"]
+  links:
+    - {label: "Code", url: "https://github.com/razanmdr/Data-Analyst/tree/main/Investigating-Netflix-Movies-and-Guest-Stars-in-The-Office"}

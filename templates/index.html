@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% import "_macros.html" as m %}
+{% import "_visuals.html" as v %}
 {% block main %}
 
 <section id="hero" class="hero wrap">
@@ -17,6 +18,12 @@
   </div>
   <aside class="hero-card">
     <div class="term-bar"><span></span><span></span><span></span><em class="mono">profil.yaml</em></div>
+    {% if person.photo %}
+    <div class="photo-wrap">
+      <img class="photo" src="{{ person.photo }}" alt="Foto von {{ person.name }}" width="480" height="480">
+      <span class="photo-tag mono">{{ person.name }} · {{ person.role }}</span>
+    </div>
+    {% endif %}
     <dl class="mono">
       <dt>name</dt><dd>{{ person.name }}</dd>
       <dt>rolle</dt><dd>{{ person.role }}</dd>
@@ -38,7 +45,9 @@
   <h2><span class="mono accent">01</span> Ausgewählte Arbeiten</h2>
   <div class="featured-grid">
     {% for p in featured %}
-    <article class="card featured">
+    <article class="card featured{% if loop.first %} wide{% elif loop.last and featured|length is even %} wide alt{% endif %}">
+      {% if p.visual %}<div class="feat-visual">{{ v.render(p.visual, p) }}</div>{% endif %}
+      <div class="feat-body">
       <div class="card-top">
         <span class="cat cat-{{ p.category }}">{{ p.category_label }}</span>
         {% if p.badge %}<span class="badge">{{ p.badge }}</span>{% endif %}
@@ -49,6 +58,7 @@
       {% if p.flow %}{{ m.flow(p.flow) }}{% endif %}
       {{ m.tags(p.tags) }}
       {{ m.links(p, root) }}
+      </div>
     </article>
     {% endfor %}
   </div>
@@ -65,6 +75,7 @@
   <div class="grid" id="project-grid">
     {% for p in projects if not p.featured %}
     <article class="card" data-cat="{{ p.category }}">
+      {% if p.image %}<img class="thumb{% if p.image.plot %} plot{% endif %}" src="{{ root }}{{ p.image.src }}" alt="{{ p.image.alt }}" loading="lazy">{% endif %}
       <div class="card-top"><span class="cat cat-{{ p.category }}">{{ p.category_label }}</span>
         {% if p.metric %}<span class="badge">{{ p.metric.value }} {{ p.metric.label }}</span>{% endif %}</div>
       <h3>{{ p.title }}</h3>
