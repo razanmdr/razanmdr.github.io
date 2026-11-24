@@ -54,11 +54,39 @@ def asset_version():
     return h.hexdigest()[:8]
 
 
+def career_timeline(experience):
+    """Bars for the to-scale career chart, in months from January of the first year."""
+    def month(s):
+        m, y = s.strip().split(".")
+        return int(y) * 12 + int(m) - 1
+
+    spans = []
+    for e in experience:
+        start, end = (month(part) for part in e["period"].replace("–", "-").split("-"))
+        role = e["role"].lower()
+        spans.append({"from": start, "to": end + 1,
+                      "qa": any(w in role for w in ("test", "qa", "quality"))})
+    first = min(s["from"] for s in spans) // 12
+    last = (max(s["to"] for s in spans) - 1) // 12
+    origin = first * 12
+    return {
+        "years": list(range(first, last + 1)),
+        "total": (last - first + 1) * 12,
+        "spans": [{"start": s["from"] - origin, "length": s["to"] - s["from"], "qa": s["qa"]} for s in spans],
+    }
+
+
 def build():
     site = load("site.yaml")
     projects = load("projects.yaml")
     for p in projects:
         p["category_label"] = CATEGORIES[p["category"]]
+        # Typesetting: a colon in titles and a comma in prose instead of a spaced dash
+        p["title"] = p["title"].replace(" – ", ": ")
+        p["summary"] = p["summary"].replace(" – ", ", ")
+        for k, val in (p.get("case") or {}).items():
+            if isinstance(val, str) and k != "example":
+                p["case"][k] = val.replace(" – ", ", ")
 
     repos = github_repo_count(site["github_user"])
     for s in site["stats"]:
@@ -84,6 +112,7 @@ def build():
         projects=projects,
         featured=featured,
         categories=CATEGORIES,
+        timeline=career_timeline(site["experience"]),
         tour_json=json.dumps(site["tour"], ensure_ascii=False),
         asset_v=asset_version(),
     )

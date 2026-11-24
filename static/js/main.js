@@ -1,66 +1,31 @@
-// Theme toggle
+// Thesis console: switch the language of the tool description
 (() => {
-  const btn = document.getElementById("theme-toggle");
-  if (!btn) return;
-  btn.addEventListener("click", () => {
-    const root = document.documentElement;
-    const next = root.dataset.theme === "light" ? "dark" : "light";
-    root.dataset.theme = next;
-    try { localStorage.setItem("theme", next); } catch (e) {}
-  });
+  const out = document.getElementById("schema-desc");
+  if (!out) return;
+  const desc = {
+    de: "Sucht Produkte im Katalog nach Kategorie und Preis.",
+    en: "Searches the product catalog by category and price.",
+  };
+  const buttons = document.querySelectorAll(".toggle button");
+  buttons.forEach((b) =>
+    b.addEventListener("click", () => {
+      buttons.forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+      out.innerHTML = '<span class="k">search_products</span>: "' + desc[b.dataset.lang] + '"';
+    })
+  );
 })();
 
 // Project filters
 (() => {
   const buttons = document.querySelectorAll(".filter");
-  const cards = document.querySelectorAll("#project-grid .card");
+  const rows = document.querySelectorAll("#project-list > li");
   buttons.forEach((b) =>
     b.addEventListener("click", () => {
-      buttons.forEach((x) => x.classList.toggle("active", x === b));
+      buttons.forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
       const f = b.dataset.filter;
-      cards.forEach((c) => c.classList.toggle("hidden", f !== "all" && c.dataset.cat !== f));
+      rows.forEach((r) => { r.hidden = f !== "all" && r.dataset.cat !== f; });
     })
   );
-})();
-
-// Guided tour
-(() => {
-  const steps = window.TOUR;
-  const box = document.getElementById("tour");
-  const start = document.getElementById("tour-start");
-  if (!steps || !box || !start) return;
-  const $ = (id) => document.getElementById(id);
-  let i = 0, focused = null;
-
-  function show() {
-    const s = steps[i];
-    const el = document.querySelector(s.target);
-    if (focused) focused.classList.remove("tour-focus");
-    if (el) {
-      el.classList.add("tour-focus");
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-      focused = el;
-    }
-    $("tour-count").textContent = `Schritt ${i + 1} von ${steps.length}`;
-    $("tour-title").textContent = s.title;
-    $("tour-text").textContent = s.text;
-    $("tour-prev").disabled = i === 0;
-    $("tour-next").textContent = i === steps.length - 1 ? "Fertig" : "Weiter";
-  }
-  function close() {
-    box.hidden = true;
-    if (focused) focused.classList.remove("tour-focus");
-  }
-  start.addEventListener("click", () => { i = 0; box.hidden = false; show(); });
-  $("tour-next").addEventListener("click", () => (i < steps.length - 1 ? (i++, show()) : close()));
-  $("tour-prev").addEventListener("click", () => { if (i > 0) { i--; show(); } });
-  $("tour-close").addEventListener("click", close);
-  document.addEventListener("keydown", (e) => {
-    if (box.hidden) return;
-    if (e.key === "Escape") close();
-    if (e.key === "ArrowRight") $("tour-next").click();
-    if (e.key === "ArrowLeft") $("tour-prev").click();
-  });
 })();
 
 // Mobile menu
@@ -71,9 +36,11 @@
   const setOpen = (open) => {
     nav.classList.toggle("open", open);
     btn.setAttribute("aria-expanded", String(open));
-    btn.textContent = open ? "✕" : "☰";
+    btn.textContent = open ? "Schließen" : "Menü";
   };
   btn.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
   nav.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setOpen(false)));
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape") setOpen(false); });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && nav.classList.contains("open")) { setOpen(false); btn.focus(); }
+  });
 })();

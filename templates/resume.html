@@ -1,53 +1,59 @@
 {% extends "base.html" %}
-{% block title %}Lebenslauf · {{ person.name }}{% endblock %}
+{% block title %}Lebenslauf, {{ person.name }}{% endblock %}
 {% block main %}
-<div class="wrap section resume">
-  <div class="resume-actions no-print">
-    <a class="muted small" href="{{ root }}">← Zurück</a>
-    <button class="btn primary" onclick="window.print()">Drucken / Als PDF speichern</button>
+<div class="section">
+  <div class="wrap resume">
+    <div class="resume-actions no-print">
+      <a class="back" href="{{ root }}">Zurück zur Startseite</a>
+      <button type="button" class="btn primary" onclick="window.print()">Drucken oder als PDF speichern</button>
+    </div>
+
+    <header>
+      <h1>{{ person.name }}</h1>
+      <p class="r-role">{{ person.role }}: {{ person.focus | join(", ") }}</p>
+      <p class="r-contact">
+        <span>{{ person.location }}</span>
+        <a href="mailto:{{ person.email }}">{{ person.email }}</a>
+        <a href="{{ person.linkedin }}">linkedin.com/in/razanmdr</a>
+        <a href="{{ person.github }}">github.com/razanmdr</a>
+        <a href="{{ site.base_url }}">{{ site.base_url | replace("https://", "") }}</a>
+      </p>
+      <p><strong>{{ person.status | replace(" · ", ", ") }}.</strong> {{ person.degree_note | replace(" · ", ", ") }}.</p>
+    </header>
+
+    <h2>Profil</h2>
+    <p>{{ person.intro }}</p>
+
+    <h2>Berufserfahrung</h2>
+    {% for e in site.experience %}
+    <div class="r-item">
+      <div class="r-row"><strong>{{ e.role }}</strong><span>{{ e.period | replace(" – ", " bis ") }}</span></div>
+      <div class="r-sub">{{ e.company }}, {{ e.place }}</div>
+      <ul>{% for b in e.bullets %}<li>{{ b }}</li>{% endfor %}</ul>
+    </div>
+    {% endfor %}
+
+    <h2>Ausgewählte Projekte</h2>
+    {% for p in featured %}
+    <div class="r-item">
+      <div class="r-row"><strong>{{ p.title | replace(" – ", ": ") }}</strong>{% if p.metric %}<span>{{ p.metric.value }}</span>{% endif %}</div>
+      <p>{{ p.summary }}</p>
+    </div>
+    {% endfor %}
+
+    <h2>Ausbildung</h2>
+    {% for e in site.education %}
+    <div class="r-item r-row"><span class="r-edu"><strong>{{ e.degree }}</strong>, {{ e.school }}</span><span>{{ e.period }}</span></div>
+    {% endfor %}
+
+    <h2>Kenntnisse</h2>
+    {% for g in site.skills %}
+    <p><strong>{{ g.group }}:</strong> {{ g["items"] | join(", ") }}</p>
+    {% endfor %}
+
+    <h2>Zertifikate und Sprachen</h2>
+    <p>{% for c in site.certifications %}{{ c.name | replace(" · ", ", ") }} ({{ c.issuer }}, {{ c.year }}){% if not loop.last %}; {% endif %}{% endfor %}.</p>
+    <p>{{ site.languages | join(", ") }}.</p>
   </div>
-
-  <header class="r-head">
-    <h1>{{ person.name }}</h1>
-    <p class="r-role">{{ person.role }} · {{ person.focus | join(" · ") }}</p>
-    <p class="small">{{ person.location }} · <a href="mailto:{{ person.email }}">{{ person.email }}</a> ·
-      <a href="{{ person.linkedin }}">linkedin.com/in/razanmdr</a> · <a href="{{ person.github }}">github.com/razanmdr</a> ·
-      <a href="{{ site.base_url }}">{{ site.base_url | replace("https://", "") }}</a></p>
-    <p class="small"><strong>{{ person.status }}</strong> · {{ person.degree_note }}</p>
-  </header>
-
-  <h2>Profil</h2>
-  <p>{{ person.intro }}</p>
-
-  <h2>Berufserfahrung</h2>
-  {% for e in site.experience %}
-  <div class="r-item">
-    <div class="r-row"><strong>{{ e.role }}</strong><span>{{ e.period }}</span></div>
-    <div class="r-sub">{{ e.company }}, {{ e.place }}</div>
-    <ul>{% for b in e.bullets %}<li>{{ b }}</li>{% endfor %}</ul>
-  </div>
-  {% endfor %}
-
-  <h2>Ausgewählte Projekte</h2>
-  {% for p in featured %}
-  <div class="r-item">
-    <div class="r-row"><strong>{{ p.title }}</strong>{% if p.metric %}<span>{{ p.metric.value }} {{ p.metric.label }}</span>{% endif %}</div>
-    <p>{{ p.summary }}</p>
-  </div>
-  {% endfor %}
-
-  <h2>Ausbildung</h2>
-  {% for e in site.education %}
-  <div class="r-row"><span><strong>{{ e.degree }}</strong>, {{ e.school }}</span><span>{{ e.period }}</span></div>
-  {% endfor %}
-
-  <h2>Kenntnisse</h2>
-  {% for g in site.skills %}
-  <p class="r-skill"><strong>{{ g.group }}:</strong> {{ g["items"] | join(", ") }}</p>
-  {% endfor %}
-
-  <h2>Zertifikate &amp; Sprachen</h2>
-  <p>{% for c in site.certifications %}{{ c.name }} ({{ c.issuer }}, {{ c.year }}){% if not loop.last %} · {% endif %}{% endfor %}</p>
-  <p>{{ site.languages | join(" · ") }}</p>
 </div>
 {% endblock %}
