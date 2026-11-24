@@ -20,7 +20,7 @@
   const buttons = document.querySelectorAll(".filter");
   const rows = [...document.querySelectorAll("#project-list > li")];
   const more = document.getElementById("show-all");
-  const LIMIT = 8;
+  const LIMIT = window.matchMedia("(max-width: 640px)").matches ? 4 : 8;
   let expanded = false, filter = "all";
   const render = () => {
     let shown = 0;
@@ -65,3 +65,13 @@
   const sc = document.querySelector(".ruler-scroll");
   if (sc && sc.scrollWidth > sc.clientWidth) sc.scrollLeft = sc.scrollWidth;
 })();
+
+// Career list on phones: tasks fold out per role
+document.querySelectorAll(".tasks-btn").forEach((b) =>
+  b.addEventListener("click", () => {
+    const li = b.closest("li");
+    const open = li.classList.toggle("open");
+    b.setAttribute("aria-expanded", String(open));
+    b.textContent = open ? "Aufgaben ausblenden" : "Aufgaben anzeigen";
+  })
+);

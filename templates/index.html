@@ -53,17 +53,24 @@
     <p class="legend" aria-hidden="true"><span><i></i>Entwicklung und Daten</span><span><i class="qa"></i>Qualität und Test</span></p>
 
     <ol class="roles">
-      {% for e in site.experience %}
+      {% for e in site.experience[:5] %}
       <li>
         <time>{{ e.period | replace(" – ", " bis ") }}</time>
         <div class="role-main">
           <h3>{{ e.role }}</h3>
           <p class="where">{{ e.company }}, {{ e.place }}{% if e.area %}. Bereich {{ e.area }}{% endif %}</p>
+          <button type="button" class="tasks-btn" aria-expanded="false">Aufgaben anzeigen</button>
         </div>
-        {% if e.bullets %}<ul>{% for b in e.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% else %}<span></span>{% endif %}
+        <ul>{% for b in e.bullets %}<li>{{ b }}</li>{% endfor %}</ul>
       </li>
       {% endfor %}
     </ol>
+    <h3 class="earlier-head">Frühere Stationen</h3>
+    <ul class="earlier">
+      {% for e in site.experience[5:] %}
+      <li><time>{{ e.period | replace(" – ", " bis ") }}</time><span><b>{{ e.role }}</b>, {{ e.company }}, {{ e.place }}</span></li>
+      {% endfor %}
+    </ul>
   </div>
 </section>
 
@@ -154,24 +161,15 @@
       </ul>
       <button type="button" class="btn show-all" id="show-all" hidden>Alle {{ rest | length }} Projekte zeigen</button>
     </div>
-  </div>
-</section>
 
-<section class="section alt" id="lab" aria-labelledby="lab-head">
-  <div class="wrap">
-    <div class="section-head">
-      <h2 id="lab-head">Zum Ausprobieren</h2>
-      <p>Kleine Anwendungen, die direkt im Browser laufen.</p>
+    <div class="lab" id="lab">
+      <h3>Im Browser ausprobieren</h3>
+      <ul>
+        {% for l in site.lab %}
+        <li><a href="{{ l.url }}" target="_blank" rel="noopener">{{ l.title | replace(" – ", ": ") }}</a><span>{{ l.desc | replace("1–2", "Ein oder zwei") }}{% if l.lang %} Oberfläche auf Englisch.{% endif %}</span></li>
+        {% endfor %}
+      </ul>
     </div>
-    <ul class="lab">
-      {% for l in site.lab %}
-      <li>
-        <h3><a href="{{ l.url }}" target="_blank" rel="noopener">{{ l.title | replace(" – ", ": ") }}</a></h3>
-        <p>{{ l.desc | replace("1–2", "Ein oder zwei") }}{% if l.lang %} Oberfläche auf Englisch.{% endif %}</p>
-        <p class="stack">{{ l.tags | join(", ") }}</p>
-      </li>
-      {% endfor %}
-    </ul>
   </div>
 </section>
 
