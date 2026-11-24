@@ -15,9 +15,8 @@
       </dl>
       <div class="cta">
         <a class="btn primary" href="mailto:{{ person.email }}">E-Mail schreiben</a>
-        <a class="btn" href="lebenslauf/">Lebenslauf ansehen</a>
+        <a class="btn" href="{{ person.linkedin }}" target="_blank" rel="noopener">LinkedIn-Profil</a>
         <span class="cta-links">
-          <a href="{{ person.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
           <a href="{{ person.github }}" target="_blank" rel="noopener">GitHub</a>
         </span>
       </div>
@@ -201,12 +200,11 @@
 <section class="contact" id="kontakt" aria-labelledby="contact-head">
   <div class="wrap">
     <h2 id="contact-head">Kontakt</h2>
-    <p>Für Stellen in Data Engineering, Data Science, KI und BI, ab sofort in Vollzeit.</p>
+    <p>Für Stellen in Data Engineering, Data Science, KI und BI, ab sofort in Vollzeit. Den Lebenslauf schicke ich gern per E-Mail.</p>
     <a class="mail" href="mailto:{{ person.email }}">{{ person.email }}</a>
     <p class="links">
       <a href="{{ person.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
       <a href="{{ person.github }}" target="_blank" rel="noopener">GitHub</a>
-      <a href="lebenslauf/">Lebenslauf zum Drucken</a>
     </p>
   </div>
 </section>

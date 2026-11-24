@@ -146,7 +146,6 @@ def build():
         print(f"  {path}")
 
     render("index.html", "index.html")
-    render("resume.html", "lebenslauf/index.html")
     for p in projects:
         if p.get("case"):
             render("project.html", f"projects/{p['slug']}/index.html", p=p)
