@@ -3,6 +3,7 @@
 Usage:  python build.py            # build into _site/
         python build.py --serve    # build and serve on http://localhost:8000
 """
+import datetime
 import json
 import os
 import shutil
@@ -55,24 +56,38 @@ def asset_version():
 
 
 def career_timeline(experience):
-    """Bars for the to-scale career chart, in months from January of the first year."""
+    """Bars for the to-scale career ruler, in months from January of the first year."""
+    today = datetime.date.today()
+    now = today.year * 12 + today.month - 1
+
     def month(s):
-        m, y = s.strip().split(".")
+        s = s.strip()
+        if s.lower() in ("heute", "present"):
+            return now
+        m, y = s.split(".")
         return int(y) * 12 + int(m) - 1
 
     spans = []
     for e in experience:
         start, end = (month(part) for part in e["period"].replace("–", "-").split("-"))
         role = e["role"].lower()
-        spans.append({"from": start, "to": end + 1,
-                      "qa": any(w in role for w in ("test", "qa", "quality"))})
+        spans.append({"from": start, "to": end + 1, "label": e.get("short", e["company"]),
+                      "current": "heute" in e["period"],
+                      "qa": any(w in role for w in ("test", "qa", "quality", "qualität"))})
     first = min(s["from"] for s in spans) // 12
-    last = (max(s["to"] for s in spans) - 1) // 12
+    last = max(max(s["to"] for s in spans) - 1, now) // 12
     origin = first * 12
+    # Print a company name only once, at its first (earliest) bar
+    seen = set()
+    for s in sorted(spans, key=lambda s: s["from"]):
+        s["show"] = s["label"] not in seen
+        seen.add(s["label"])
     return {
         "years": list(range(first, last + 1)),
         "total": (last - first + 1) * 12,
-        "spans": [{"start": s["from"] - origin, "length": s["to"] - s["from"], "qa": s["qa"]} for s in spans],
+        "now": now - origin,
+        "spans": [{"start": s["from"] - origin, "length": s["to"] - s["from"], "qa": s["qa"],
+                   "label": s["label"] if s["show"] else "", "current": s["current"]} for s in spans],
     }
 
 

@@ -15,17 +15,32 @@
   );
 })();
 
-// Project filters
+// Project list: show the first rows, filter by area, reveal all on request
 (() => {
   const buttons = document.querySelectorAll(".filter");
-  const rows = document.querySelectorAll("#project-list > li");
+  const rows = [...document.querySelectorAll("#project-list > li")];
+  const more = document.getElementById("show-all");
+  const LIMIT = 8;
+  let expanded = false, filter = "all";
+  const render = () => {
+    let shown = 0;
+    rows.forEach((r) => {
+      const match = filter === "all" || r.dataset.cat === filter;
+      const visible = match && (expanded || filter !== "all" || shown < LIMIT);
+      r.hidden = !visible;
+      if (visible) shown++;
+    });
+    if (more) more.hidden = expanded || filter !== "all" || rows.length <= LIMIT;
+  };
   buttons.forEach((b) =>
     b.addEventListener("click", () => {
       buttons.forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
-      const f = b.dataset.filter;
-      rows.forEach((r) => { r.hidden = f !== "all" && r.dataset.cat !== f; });
+      filter = b.dataset.filter;
+      render();
     })
   );
+  if (more) more.addEventListener("click", () => { expanded = true; render(); rows[LIMIT] && rows[LIMIT].querySelector("a, h4").focus?.(); });
+  render();
 })();
 
 // Mobile menu
@@ -43,4 +58,10 @@
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && nav.classList.contains("open")) { setOpen(false); btn.focus(); }
   });
+})();
+
+// Career ruler: on narrow screens start at the most recent years
+(() => {
+  const sc = document.querySelector(".ruler-scroll");
+  if (sc && sc.scrollWidth > sc.clientWidth) sc.scrollLeft = sc.scrollWidth;
 })();

@@ -4,7 +4,7 @@ github_user: "razanmdr"
 person:
   name: "Mochammad Dary Razan"
   short: "Dary"
-  role: "Data & AI Engineer"
+  role: "Data Engineer / Data Scientist"
   photo: "static/img/profile.webp"
   location: "Jena, DE"
   email: "darry.razan@gmail.com"
@@ -14,11 +14,12 @@ person:
   open_to: "Offen für Data-, KI- und QA-Rollen"
   tagline: "Daten, KI-Agents und Software, auf die man sich verlassen kann."
   intro: >-
-    Ich baue Datenpipelines, ML-Modelle und datengetriebene KI-Anwendungen und
-    untersuche in meiner Masterarbeit, wie zuverlässig LLM-Agents in der Praxis
-    sind. Hintergrund in SAP S/4HANA BI und Software-QA (ISTQB).
+    Ich baue datengetriebene Anwendungen, automatisiere Softwaretests und
+    untersuche in meiner Masterarbeit, wie zuverlässig KI-Systeme in der Praxis
+    arbeiten. Bei JENOPTIK habe ich einen Echtzeit-Liefermonitor auf SAP
+    S/4HANA gebaut, bei Siemens Energy und der NT AG Tests automatisiert.
   focus: ["KI & LLM-Evaluation", "Data & BI", "Quality Engineering"]
-  employers: ["JENOPTIK", "Siemens Energy", "Neue Technologie AG"]
+  employers: ["JENOPTIK", "Siemens Energy", "NT Neue Technologie AG"]
   degree_note: "M.Sc. E-Commerce (Data/AI), EAH Jena · Abschluss 03/2027"
 
 # Fallback values; repos are refreshed from the GitHub API at build time
@@ -29,50 +30,76 @@ stats:
   - {value: "35", label: "Unit-Tests im Playground"}
 
 experience:
+  - period: "02.2026 – heute"
+    role: "Softwareentwickler (freiberuflich)"
+    company: "Selbstständig"
+    short: "Selbstständig"
+    place: "Jena"
+    bullets:
+      - "Entwicklung von SaaS-Lösungen für kleine und mittlere Unternehmen (KMU)"
+      - "Konzeption, Umsetzung und Betrieb von Web-Anwendungen"
+      - "Beratung zu Digitalisierung, Daten und KI-Einsatz"
   - period: "12.2024 – 01.2026"
     role: "Application & Software Quality Engineer (Werkstudent)"
-    company: "Neue Technologie AG"
+    company: "NT Neue Technologie AG"
+    short: "NT AG"
     place: "Erfurt"
-    tags: ["Playwright", "TypeScript", "CI/CD"]
+    area: "Banking & Finance"
     bullets:
       - "Testszenarien für über 50 Customer Journeys in Banking-Anwendungen erstellt"
       - "Automatisierte E2E-Tests mit Playwright und TypeScript in CI/CD-Pipelines integriert"
       - "Manuelle Fachtests und Qualitätsreporting"
   - period: "06.2024 – 09.2024"
-    role: "Data Science (Bachelorand)"
+    role: "Werkstudent Data Science (Bachelorarbeit)"
     company: "JENOPTIK"
+    short: "JENOPTIK"
     place: "Jena"
-    tags: ["SAP S/4HANA", "ABAP CDS", "SAP Analytics Cloud"]
+    area: "SCM Logistics & Processes"
     bullets:
-      - "Echtzeit-Liefermonitor mit ABAP CDS Views auf S/4HANA entwickelt"
+      - "Echtzeit-Liefermonitor mit ABAP CDS Views auf SAP S/4HANA entwickelt"
       - "Live-Dashboards in SAP Analytics Cloud aufgebaut"
       - "Performance- und Lasttests sowie Schulungen der Anwender"
   - period: "10.2023 – 05.2024"
-    role: "Software- & Anwendungstest (Werkstudent)"
+    role: "Werkstudent Software- & Anwendungstest"
     company: "JENOPTIK"
+    short: "JENOPTIK"
     place: "Jena"
-    tags: ["iOS", "Intune", "Azure AD"]
+    area: "SCM Logistics & Processes"
     bullets:
       - "Gerätenahe Tests auf über 50 iOS-Geräten"
       - "Tests für RFID-basierte Login-Karten"
       - "Unterstützung der MDM-Integration (Intune / Azure AD) und technische Dokumentation"
   - period: "07.2022 – 09.2023"
-    role: "Softwareentwicklung & QA (Werkstudent)"
+    role: "Werkstudent Softwareentwicklung & Quality Assurance"
     company: "Siemens Energy"
+    short: "Siemens Energy"
     place: "Erfurt"
-    tags: ["Selenium", ".NET", "Testautomatisierung"]
+    area: "Instandhaltung, Produktions- und Wartungsanwendungen"
     bullets:
       - "Funktionale und nicht-funktionale Tests"
       - "Testautomatisierung mit Selenium"
       - ".NET-Anwendung zur Automatisierung von Test- und Supportprozessen"
   - period: "04.2021 – 10.2021"
-    role: "Softwareentwicklung (Praktikum)"
+    role: "Softwareentwickler (Praktikum)"
     company: "PT. Halotec Indonesia"
+    short: "Halotec"
     place: "Jakarta"
-    tags: ["OCR", "Computer Vision"]
+    area: "Forschung und Entwicklung"
     bullets:
-      - "OCR-basiertes Smart-Camera-Projekt zur Erkennung von Container-IDs"
-      - "Web- und Mobile-Anwendungen"
+      - "OCR-basiertes Smart-Camera-Projekt zur Erkennung von Container-IDs (Computer Vision)"
+      - "Entwicklung von Web- und Mobile-Anwendungen"
+  - period: "01.2020 – 12.2020"
+    role: "Data Validation (freiberuflich)"
+    company: "TELUS International AI Data Solutions"
+    short: "TELUS"
+    place: "remote"
+    bullets: []
+  - period: "08.2019 – 10.2019"
+    role: "Software-Qualitätssicherung (freiberuflich)"
+    company: "Voi Technology"
+    short: "Voi"
+    place: "Erfurt"
+    bullets: []
 
 skills:
   - group: "KI & Machine Learning"

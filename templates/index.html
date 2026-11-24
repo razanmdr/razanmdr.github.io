@@ -3,23 +3,90 @@
 {% set thesis = featured[0] %}
 
 <section class="hero" id="top">
-  <div class="wrap">
-    <div>
-      <h1>Ich prüfe, ob KI-Agents das Richtige tun.</h1>
-      <p class="sub">Data &amp; AI Engineer in Jena. Ich baue Datenpipelines und ML-Modelle und teste, wie zuverlässig LLM-Agents Tools aufrufen.</p>
-      <p class="meta">Zuvor bei JENOPTIK, Siemens Energy und der Neuen Technologie AG.</p>
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <h1 class="name">Mochammad Dary Razan</h1>
+      <p class="role">{{ person.role }} in Jena</p>
+      <p class="intro">{{ person.intro }}</p>
+      <dl class="keyfacts">
+        <div><dt>Verfügbar</dt><dd>Ab sofort, Vollzeit</dd></div>
+        <div><dt>Abschluss</dt><dd>M.Sc. E-Commerce, Data/AI, 03/2027</dd></div>
+        <div><dt>Standort</dt><dd>Jena, offen für Deutschland und Österreich</dd></div>
+      </dl>
       <div class="cta">
         <a class="btn primary" href="mailto:{{ person.email }}">E-Mail schreiben</a>
         <a class="btn" href="lebenslauf/">Lebenslauf ansehen</a>
+        <span class="cta-links">
+          <a href="{{ person.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="{{ person.github }}" target="_blank" rel="noopener">GitHub</a>
+        </span>
       </div>
     </div>
+    <figure class="portrait">
+      <img src="{{ person.photo }}" alt="Porträt von {{ person.name }}" width="480" height="600">
+    </figure>
+  </div>
+</section>
 
-    <section class="console" aria-labelledby="console-head">
-      <div class="console-head">
-        <h2 id="console-head">Ein Testfall aus der Masterarbeit</h2>
-        <div class="toggle" role="group" aria-label="Sprache der Tool-Beschreibung"><span class="toggle-label" aria-hidden="true">Schema</span>
-          <button type="button" data-lang="de" aria-pressed="true">Deutsch</button>
-          <button type="button" data-lang="en" aria-pressed="false">Englisch</button>
+<section class="section" id="werdegang" aria-labelledby="career-head">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="career-head">Werdegang</h2>
+      <p>Jeder Balken zeigt die echte Dauer, von {{ timeline.years[0] }} bis heute.</p>
+    </div>
+
+    <div class="ruler-scroll">
+      <div class="ruler" style="--t:{{ timeline.total }};--now:{{ timeline.now }}" role="img"
+           aria-label="Zeitstrahl der beruflichen Stationen von {{ timeline.years[0] }} bis heute">
+        <div class="lane">
+          {% for s in timeline.spans %}
+          <div class="bar{% if s.qa %} qa{% endif %}{% if s.current %} current{% endif %}" style="--s:{{ s.start }};--d:{{ s.length }}">
+            {% if s.label %}<span>{{ s.label }}</span>{% endif %}
+          </div>
+          {% endfor %}
+          <div class="now"><span>heute</span></div>
+        </div>
+        <div class="ticks" aria-hidden="true"></div>
+        <ol class="years" style="--n:{{ timeline.years | length }}" aria-hidden="true">{% for y in timeline.years %}<li>{{ y }}</li>{% endfor %}</ol>
+      </div>
+    </div>
+    <p class="legend" aria-hidden="true"><span><i></i>Entwicklung und Daten</span><span><i class="qa"></i>Qualität und Test</span></p>
+
+    <ol class="roles">
+      {% for e in site.experience %}
+      <li>
+        <time>{{ e.period | replace(" – ", " bis ") }}</time>
+        <div class="role-main">
+          <h3>{{ e.role }}</h3>
+          <p class="where">{{ e.company }}, {{ e.place }}{% if e.area %}. Bereich {{ e.area }}{% endif %}</p>
+        </div>
+        {% if e.bullets %}<ul>{% for b in e.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% else %}<span></span>{% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<section class="section alt" id="masterarbeit" aria-labelledby="thesis-head">
+  <div class="wrap thesis-grid">
+    <div>
+      <h2 id="thesis-head">Masterarbeit</h2>
+      <p class="thesis-title"><a href="projects/{{ thesis.slug }}/">{{ thesis.title }}</a></p>
+      <p>{{ thesis.summary }}</p>
+      <dl class="facts">
+        <div><dt>Testfälle</dt><dd>{{ thesis.metric.value }}</dd></div>
+        <div><dt>Gemessen</dt><dd>Tool-Auswahl und Parameter</dd></div>
+        <div><dt>Betreuung</dt><dd>Prof. Dr. Marek Opuszko, EAH Jena</dd></div>
+        <div><dt>Abschluss</dt><dd>März 2027</dd></div>
+      </dl>
+    </div>
+
+    <section class="testcase" aria-labelledby="testcase-head">
+      <div class="testcase-head">
+        <h3 id="testcase-head">Ein Testfall</h3>
+        <div class="toggle" role="group" aria-label="Sprache der Tool-Beschreibung">
+          <button type="button" data-lang="de" aria-pressed="true">Schema Deutsch</button>
+          <button type="button" data-lang="en" aria-pressed="false">Schema Englisch</button>
         </div>
       </div>
       <div class="turn">
@@ -33,138 +100,85 @@
       <div class="turn">
         <small>Erwarteter Aufruf</small>
 <pre><span class="k">search_products</span>(
-  <span class="k">category</span>=<span class="v">"running_shoes"</span>,
-  <span class="k">max_price</span>=<span class="v">100</span>
+  <span class="k">category</span>=<mark>"running_shoes"</mark>,
+  <span class="k">max_price</span>=<mark>100</mark>
 )</pre>
       </div>
-      <p class="console-foot">Illustratives Beispiel. Die Arbeit misst an {{ thesis.metric.value }} Testfällen, ob das Modell dieses Tool wählt und die markierten Werte richtig füllt, je nach Sprache von Anfrage und Schema.</p>
+      <p class="testcase-foot">Illustratives Beispiel. Gemessen wird, ob das Modell dieses Tool wählt und die markierten Werte richtig füllt, je nach Sprache von Anfrage und Schema.</p>
     </section>
   </div>
 </section>
 
-<section class="section" id="arbeiten" aria-labelledby="work-head">
+<section class="section" id="projekte" aria-labelledby="work-head">
   <div class="wrap">
     <div class="section-head">
-      <h2 id="work-head">{{ featured | length }} Projekte, jedes mit Ergebnis</h2>
-      <p>Von Echtzeit-Dashboards in SAP bis zur Evaluation von Sprachmodellen. Die Zahlen stammen aus den Projektberichten.</p>
+      <h2 id="work-head">Ausgewählte Projekte</h2>
+      <p>Jedes mit einem messbaren Ergebnis. Die Zahlen stammen aus Notebooks, Modellen und Nutzertests.</p>
     </div>
-
-    <article class="thesis">
-      <div>
-        <h3><a href="projects/{{ thesis.slug }}/">{{ thesis.title }}</a></h3>
-        <p>{{ thesis.summary }}</p>
-      </div>
-      <dl class="facts">
-        <div><dt>Testfälle</dt><dd>{{ thesis.metric.value }}</dd></div>
-        <div><dt>Gemessen</dt><dd>Tool-Auswahl und Parameter</dd></div>
-        <div><dt>Betreuung</dt><dd>Prof. Dr. Marek Opuszko, EAH Jena</dd></div>
-        <div><dt>Abschluss</dt><dd>März 2027</dd></div>
-      </dl>
-    </article>
-
     <ul class="results">
       {% for p in featured[1:] %}
       <li>
-        <div class="result">{{ p.metric.value }}<small>{{ p.metric.label }}</small></div>
+        <p class="figure">{{ p.metric.value }}<small>{{ p.metric.label }}</small></p>
         <div>
-          <h3><a href="projects/{{ p.slug }}/">{{ p.title }}</a></h3>
+          <h3><a href="projects/{{ p.slug }}/">{{ p.title | replace(" – ", ": ") }}</a></h3>
           <p>{{ p.summary }}</p>
-          {% if p.links or p.internal %}
-          <div class="more">
+          <p class="more">
+            <a href="projects/{{ p.slug }}/">Case Study</a>
             {% for l in p.links %}<a href="{{ l.url }}" target="_blank" rel="noopener">{{ l.label }}</a>{% endfor %}
-            {% if p.internal %}<span class="note">Intern, kein öffentlicher Code</span>{% endif %}
-          </div>
-          {% endif %}
+            {% if p.internal %}<span>Intern, kein öffentlicher Code</span>{% endif %}
+          </p>
         </div>
       </li>
       {% endfor %}
     </ul>
+
+    {% set rest = projects | rejectattr("featured") | list %}
+    <div class="more-projects">
+      <div class="section-head small">
+        <h3 id="projects-head">{{ rest | length }} weitere Projekte</h3>
+        <div class="filters" role="group" aria-label="Nach Bereich filtern">
+          <button type="button" class="filter" data-filter="all" aria-pressed="true">Alle</button>
+          {% for key, label in categories.items() %}{% set n = rest | selectattr("category", "equalto", key) | list | length %}{% if n %}
+          <button type="button" class="filter" data-filter="{{ key }}" aria-pressed="false">{{ label }} <span>{{ n }}</span></button>
+          {% endif %}{% endfor %}
+        </div>
+      </div>
+      <ul class="projects" id="project-list">
+        {% for p in rest %}
+        <li data-cat="{{ p.category }}">
+          <h4>{% if p.links %}<a href="{{ p.links[0].url }}" target="_blank" rel="noopener">{{ p.title | replace(" – ", ": ") }}</a>{% else %}{{ p.title | replace(" – ", ": ") }}{% endif %}</h4>
+          <p>{{ p.summary }}</p>
+          <p class="stack">{{ p.tags | join(", ") }}{% if p.metric %}<b>{{ p.metric.value }}</b>{% endif %}{% if not p.links %}<em>{{ p.note or "Hochschulprojekt" }}</em>{% endif %}</p>
+        </li>
+        {% endfor %}
+      </ul>
+      <button type="button" class="btn show-all" id="show-all" hidden>Alle {{ rest | length }} Projekte zeigen</button>
+    </div>
   </div>
 </section>
 
-{% set rest = projects | rejectattr("featured") | list %}
-<section class="section tint" id="projekte" aria-labelledby="projects-head">
+<section class="section alt" id="lab" aria-labelledby="lab-head">
   <div class="wrap">
     <div class="section-head">
-      <h2 id="projects-head">{{ rest | length }} weitere Projekte</h2>
-      <p>Pipelines, Modelle und Analysen aus Studium und Selbststudium, die meisten mit Code auf GitHub.</p>
-    </div>
-    <div class="filters" role="group" aria-label="Nach Bereich filtern">
-      <button type="button" class="filter" data-filter="all" aria-pressed="true">Alle<span>{{ rest | length }}</span></button>
-      {% for key, label in categories.items() %}{% set n = rest | selectattr("category", "equalto", key) | list | length %}{% if n %}
-      <button type="button" class="filter" data-filter="{{ key }}" aria-pressed="false">{{ label }}<span>{{ n }}</span></button>
-      {% endif %}{% endfor %}
-    </div>
-    <ul class="projects" id="project-list">
-      {% for p in rest %}
-      <li data-cat="{{ p.category }}">
-        <div>
-          <h3>{% if p.links %}<a href="{{ p.links[0].url }}" target="_blank" rel="noopener">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}</h3>
-          <span class="cat">{{ p.category_label }}</span>
-        </div>
-        <p>{{ p.summary }}<span class="stack">{{ p.tags | join(", ") }}</span></p>
-        <div class="side">
-          {% if p.metric %}<b>{{ p.metric.value }}</b>{% endif %}
-          {% for l in p.links %}<a href="{{ l.url }}" target="_blank" rel="noopener">{{ l.label }}</a>{% endfor %}
-          {% if p.note %}<span>{{ p.note }}</span>{% elif p.internal %}<span>Intern</span>{% endif %}
-        </div>
-      </li>
-      {% endfor %}
-    </ul>
-  </div>
-</section>
-
-<section class="section" id="lab" aria-labelledby="lab-head">
-  <div class="wrap">
-    <div class="section-head">
-      <h2 id="lab-head">Im Browser ausprobieren</h2>
-      <p>Kleine Programme, die direkt im Browser laufen. Python-Logik per Pyodide, mit Unit-Tests.</p>
+      <h2 id="lab-head">Zum Ausprobieren</h2>
+      <p>Kleine Anwendungen, die direkt im Browser laufen.</p>
     </div>
     <ul class="lab">
       {% for l in site.lab %}
       <li>
         <h3><a href="{{ l.url }}" target="_blank" rel="noopener">{{ l.title | replace(" – ", ": ") }}</a></h3>
-        <p>{{ l.desc | replace("–", "bis") }}{% if l.lang %} Oberfläche auf Englisch.{% endif %}</p>
-        <span class="stack">{{ l.tags | join(", ") }}</span>
+        <p>{{ l.desc | replace("1–2", "Ein oder zwei") }}{% if l.lang %} Oberfläche auf Englisch.{% endif %}</p>
+        <p class="stack">{{ l.tags | join(", ") }}</p>
       </li>
       {% endfor %}
     </ul>
   </div>
 </section>
 
-<section class="section tint" id="werdegang" aria-labelledby="career-head">
+<section class="section" id="kenntnisse" aria-labelledby="skills-head">
   <div class="wrap">
     <div class="section-head">
-      <h2 id="career-head">Fünf Stationen, maßstabsgetreu</h2>
-      <p>Jeder Balken zeigt die echte Dauer, von {{ timeline.years[0] }} bis {{ timeline.years[-1] }}.</p>
-    </div>
-    <div class="scale" aria-hidden="true">
-      <div class="years" style="--n:{{ timeline.years | length }}">{% for y in timeline.years %}<span>{{ y }}</span>{% endfor %}</div>
-      <div class="track">
-        {% for s in timeline.spans %}<div class="span{% if s.qa %} qa{% endif %}" style="--s:{{ s.start }};--d:{{ s.length }};--t:{{ timeline.total }}"></div>{% endfor %}
-      </div>
-    </div>
-    <div class="legend" aria-hidden="true"><span><i></i>Entwicklung und Daten</span><span><i class="qa"></i>Qualität und Test</span></div>
-    <ol class="roles" reversed>
-      {% for e in site.experience %}
-      <li>
-        <time>{{ e.period | replace(" – ", " bis ") }}</time>
-        <h3>{{ e.role }}</h3>
-        <span class="where">{{ e.company }}, {{ e.place }}</span>
-        <details>
-          <summary>Aufgaben</summary>
-          <ul>{% for b in e.bullets %}<li>{{ b }}</li>{% endfor %}</ul>
-        </details>
-      </li>
-      {% endfor %}
-    </ol>
-  </div>
-</section>
-
-<section class="section" id="skills" aria-labelledby="skills-head">
-  <div class="wrap">
-    <div class="section-head">
-      <h2 id="skills-head">Werkzeuge und Nachweise</h2>
+      <h2 id="skills-head">Kenntnisse</h2>
       <p>Gruppiert nach Arbeitsfeld. Interessen: {{ site.interests | join(", ") }}.</p>
     </div>
     <dl class="skills">
@@ -176,25 +190,26 @@
     <div class="records">
       <div>
         <h3>Zertifikate</h3>
-        <ul>{% for c in site.certifications %}<li><span>{{ c.name | replace(" · ", ", ") }}, {{ c.issuer }}</span><span>{{ c.year }}</span></li>{% endfor %}</ul>
+        <ul>{% for c in site.certifications %}<li><span>{{ c.name | replace(" · ", ", ") }}<small>{{ c.issuer }}</small></span><span>{{ c.year }}</span></li>{% endfor %}</ul>
       </div>
       <div>
         <h3>Ausbildung</h3>
-        <ul>{% for e in site.education %}<li><span>{{ e.degree }}, {{ e.school }}</span><span>{{ e.period }}</span></li>{% endfor %}</ul>
+        <ul>{% for e in site.education %}<li><span>{{ e.degree }}<small>{{ e.school }}</small></span><span>{{ e.period }}</span></li>{% endfor %}</ul>
       </div>
     </div>
   </div>
 </section>
 
-<section class="close" id="kontakt" aria-labelledby="close-head">
+<section class="contact" id="kontakt" aria-labelledby="contact-head">
   <div class="wrap">
-    <h2 id="close-head">Sie suchen jemanden für Daten, KI oder Qualität?</h2>
+    <h2 id="contact-head">Kontakt</h2>
+    <p>Für Stellen in Data Engineering, Data Science, KI und BI, ab sofort in Vollzeit.</p>
     <a class="mail" href="mailto:{{ person.email }}">{{ person.email }}</a>
-    <div class="links">
+    <p class="links">
       <a href="{{ person.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
       <a href="{{ person.github }}" target="_blank" rel="noopener">GitHub</a>
       <a href="lebenslauf/">Lebenslauf zum Drucken</a>
-    </div>
+    </p>
   </div>
 </section>
 {% endblock %}
