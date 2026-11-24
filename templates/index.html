@@ -68,11 +68,13 @@
 <section id="projects" class="wrap section">
   <h2><span class="mono accent">02</span> Alle Projekte</h2>
   <div class="filters" role="tablist">
-    <button class="filter active" data-filter="all">Alle <em>{{ projects | length }}</em></button>
-    {% for key, label in categories.items() %}
-    <button class="filter" data-filter="{{ key }}">{{ label }} <em>{{ projects | selectattr("category", "equalto", key) | list | length }}</em></button>
-    {% endfor %}
+    {% set grid = projects | rejectattr("featured") | list %}
+    <button class="filter active" data-filter="all">Alle <em>{{ grid | length }}</em></button>
+    {% for key, label in categories.items() %}{% set n = grid | selectattr("category", "equalto", key) | list | length %}{% if n %}
+    <button class="filter" data-filter="{{ key }}">{{ label }} <em>{{ n }}</em></button>
+    {% endif %}{% endfor %}
   </div>
+  <p class="muted small filter-note">Weitere Projekte – die {{ featured | length }} Case Studies stehen oben unter <a href="#featured">Ausgewählte Arbeiten</a>.</p>
   <div class="grid" id="project-grid">
     {% for p in projects if not p.featured %}
     <article class="card" data-cat="{{ p.category }}">
@@ -96,7 +98,7 @@
   <div class="grid">
     {% for l in site.lab %}
     <a class="card lab" href="{{ l.url }}" target="_blank" rel="noopener">
-      <h3>{{ l.title }} <span class="accent">↗</span></h3>
+      <h3>{{ l.title }} <span class="accent">↗</span>{% if l.lang %} <span class="badge">{{ l.lang }}</span>{% endif %}</h3>
       <p>{{ l.desc }}</p>
       {{ m.tags(l.tags) }}
     </a>

@@ -18,11 +18,24 @@
   tags: ["LLM-Evaluation", "Function Calling", "Schema-Lokalisierung"]
   links: []
   case:
-    context: "LLM-Agents im E-Commerce müssen Tools zuverlässig aufrufen, auch wenn Anfrage und Tool-Schema nicht in derselben Sprache vorliegen."
-    question: "Wie beeinflusst die Sprache von Anfrage und Tool-Schema die Tool-Auswahl und die Parameterextraktion?"
-    approach: "Benchmark mit 100 Testfällen; Vergleich von API-Modellen mit lokalen Open-Weight-Modellen über englische und deutsche Schemas und Queries."
-    status: "Laufende Masterarbeit an der EAH Jena, Abschluss voraussichtlich 03/2027."
-
+    context: "LLM-Agents im E-Commerce müssen Tools zuverlässig aufrufen – etwa eine Produktsuche, eine Retoure oder eine Bestellabfrage. In Deutschland stellen Kunden ihre Fragen auf Deutsch, die Tool-Definitionen (Funktionsnamen, Beschreibungen, Parameter) sind aber meist auf Englisch geschrieben."
+    question: "Wie beeinflusst die Sprache von Nutzeranfrage und Tool-Schema die Tool-Auswahl und die Parameterextraktion – und hilft es, die Tool-Beschreibungen zu übersetzen (Schema-Lokalisierung)?"
+    approach: "2×2-Design: Nutzeranfrage Deutsch oder Englisch × Tool-Schema Deutsch oder Englisch, plus eine Schema-Lokalisierung als Intervention. Benchmark mit 100 Testfällen aus mehreren Kategorien (u. a. Datenbankabfragen, Retouren, Produktinformationen). Verglichen werden API-Modelle mit einem lokal betriebenen Open-Weight-Modell. Gemessen werden die Genauigkeit der Tool-Auswahl und die Korrektheit der extrahierten Parameter."
+    example: |
+      {
+        "name": "search_products",
+        "description": "Sucht Produkte im Katalog nach Kategorie und Preis.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "category":  { "type": "string",  "description": "Produktkategorie, z. B. running_shoes" },
+            "max_price": { "type": "number",  "description": "Höchstpreis in Euro" }
+          },
+          "required": ["category"]
+        }
+      }
+    example_note: "Beispiel eines deutsch lokalisierten Tool-Schemas (illustrativ). Erwarteter Aufruf für „Zeig mir Laufschuhe unter 100 €“: search_products(category=\"running_shoes\", max_price=100)."
+    status: "Laufende Masterarbeit an der EAH Jena, betreut von Prof. Dr. Marek Opuszko; Abschluss voraussichtlich 03/2027."
 - slug: jenoptik-liefermonitor
   visual: dashboard
   title: "Echtzeit-Liefermonitor bei JENOPTIK"

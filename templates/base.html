@@ -21,7 +21,7 @@
   <header class="nav">
     <div class="wrap nav-inner">
       <a class="brand mono" href="{{ root }}">dary@jena:~$</a>
-      <nav class="nav-links">
+      <nav class="nav-links" id="nav-links">
         {% block navlinks %}
         <a href="{{ root }}#featured">Case Studies</a>
         <a href="{{ root }}#projects">Projekte</a>
@@ -33,6 +33,7 @@
         {% endblock %}
       </nav>
       <button class="icon-btn" id="theme-toggle" aria-label="Farbschema wechseln">◐</button>
+      <button class="icon-btn menu-btn" id="menu-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-links">☰</button>
     </div>
   </header>
 

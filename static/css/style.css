@@ -297,3 +297,19 @@ body { background-image:
 
 [data-theme="dark"] .viz-img.photo-img img { filter: none; }
 .viz-img.photo-img img { background: transparent; padding: 0; border: 0; max-height: 320px; }
+
+/* ---------- v4: mobile menu, filter note ---------- */
+.menu-btn { display: none; }
+.filter-note { margin: -.5rem 0 1.2rem; }
+@media (max-width: 900px) {
+  .menu-btn { display: inline-flex; align-items: center; justify-content: center; }
+  .nav-inner { position: relative; gap: .6rem; }
+  .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0;
+    flex-direction: column; gap: 0; margin: 0; padding: .4rem 1.25rem 1rem;
+    background: var(--bg); border-bottom: 1px solid var(--line); box-shadow: 0 20px 40px rgba(0,0,0,.25); }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: .75rem 0; font-size: 1rem; color: var(--text); border-bottom: 1px solid var(--line); }
+  .nav-links a:last-child { border-bottom: 0; }
+}
+
+.case-code { margin: 1rem 0 .5rem; font-size: .8rem; }

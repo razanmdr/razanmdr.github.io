@@ -73,11 +73,16 @@ def build():
         trim_blocks=True,
         lstrip_blocks=True,
     )
+    featured = [p for p in projects if p.get("featured")]
+    zahl = {1: "Eine", 2: "Zwei", 3: "Drei", 4: "Vier", 5: "Fünf", 6: "Sechs", 7: "Sieben",
+            8: "Acht", 9: "Neun", 10: "Zehn", 11: "Elf", 12: "Zwölf"}.get(len(featured), str(len(featured)))
+    for step in site["tour"]:
+        step["text"] = step["text"].replace("{featured}", zahl)
     ctx = dict(
         site=site,
         person=site["person"],
         projects=projects,
-        featured=[p for p in projects if p.get("featured")],
+        featured=featured,
         categories=CATEGORIES,
         tour_json=json.dumps(site["tour"], ensure_ascii=False),
         asset_v=asset_version(),

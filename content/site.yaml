@@ -10,7 +10,7 @@ person:
   email: "darry.razan@gmail.com"
   github: "https://github.com/razanmdr"
   linkedin: "https://www.linkedin.com/in/razanmdr/"
-  status: "Verfügbar ab sofort · Vollzeit"
+  status: "Ab sofort Vollzeit · Masterarbeit parallel bis 03/2027"
   open_to: "Offen für Data-, KI- und QA-Rollen"
   tagline: "Daten, KI-Agents und Software, auf die man sich verlassen kann."
   intro: >-
@@ -112,17 +112,19 @@ lab:
     tags: ["JavaScript", "Web Speech API"]
     url: "https://omnilabel.netlify.app/?produkt=protein"
   - title: "Snake – Python im Browser"
+    lang: "EN"
     desc: "1–2 Spieler. Spiellogik in Python, läuft per Pyodide direkt im Browser. 12 Unit-Tests."
     tags: ["Python", "Pyodide", "JS"]
     url: "https://razanmdr.github.io/playground/snake/"
   - title: "Schach-Regelwerk"
+    lang: "EN"
     desc: "OOP-Figuren und Validierungskette für Züge, mit Testmodus im Browser. 23 Unit-Tests."
     tags: ["Python", "OOP", "unittest"]
     url: "https://razanmdr.github.io/playground/chess/"
 
 tour:
   - {target: "#hero", title: "Hallo, ich bin Dary", text: "Data & AI Engineer aus Jena, mit QA-Hintergrund. Diese Tour dauert etwa eine Minute."}
-  - {target: "#featured", title: "Ausgewählte Arbeiten", text: "Vier Case Studies mit Kennzahl, Ablauf und Links zu Code oder Details."}
+  - {target: "#featured", title: "Ausgewählte Arbeiten", text: "{featured} Case Studies mit Kennzahl, Ablauf und Links zu Code oder Details."}
   - {target: "#projects", title: "Alle Projekte", text: "Nach Bereich filterbar: Data Engineering, Machine Learning, KI & LLM, E-Commerce."}
   - {target: "#lab", title: "Lab", text: "Kleine Programme, die direkt im Browser laufen, inklusive Unit-Tests."}
   - {target: "#experience", title: "Erfahrung", text: "Werkstudent bei JENOPTIK, Siemens Energy und Neue Technologie AG."}

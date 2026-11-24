@@ -25,6 +25,10 @@
   {% for key, label in labels.items() if p.case[key] %}
   <h2>{{ label }}</h2>
   <p>{{ p.case[key] }}</p>
+  {% if key == "approach" and p.case.example %}
+  <pre class="code case-code">{{ p.case.example }}</pre>
+  {% if p.case.example_note %}<p class="muted small">{{ p.case.example_note }}</p>{% endif %}
+  {% endif %}
   {% endfor %}
 
   <div class="card-links">

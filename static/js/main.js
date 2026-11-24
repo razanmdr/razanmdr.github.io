@@ -62,3 +62,18 @@
     if (e.key === "ArrowLeft") $("tour-prev").click();
   });
 })();
+
+// Mobile menu
+(() => {
+  const btn = document.getElementById("menu-toggle");
+  const nav = document.getElementById("nav-links");
+  if (!btn || !nav) return;
+  const setOpen = (open) => {
+    nav.classList.toggle("open", open);
+    btn.setAttribute("aria-expanded", String(open));
+    btn.textContent = open ? "✕" : "☰";
+  };
+  btn.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+  nav.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setOpen(false)));
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") setOpen(false); });
+})();
