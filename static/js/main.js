@@ -72,6 +72,6 @@ document.querySelectorAll(".tasks-btn").forEach((b) =>
     const li = b.closest("li");
     const open = li.classList.toggle("open");
     b.setAttribute("aria-expanded", String(open));
-    b.textContent = open ? "Aufgaben ausblenden" : "Aufgaben anzeigen";
+    b.textContent = open ? "Weniger" : "Mehr lesen";
   })
 );

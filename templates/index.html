@@ -59,9 +59,9 @@
         <div class="role-main">
           <h3>{{ e.role }}</h3>
           <p class="where">{{ e.company }}, {{ e.place }}{% if e.area %}. Bereich {{ e.area }}{% endif %}</p>
-          <button type="button" class="tasks-btn" aria-expanded="false">Aufgaben anzeigen</button>
+          <button type="button" class="tasks-btn" aria-expanded="false">Mehr lesen</button>
         </div>
-        <ul>{% for b in e.bullets %}<li>{{ b }}</li>{% endfor %}</ul>
+        <p class="story">{{ e.story }}</p>
       </li>
       {% endfor %}
     </ol>
