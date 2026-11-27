@@ -30,6 +30,8 @@ stats:
   - {value: "35", label: "Unit-Tests im Playground"}
 
 experience:
+  # story: Website-Text (SMART: konkret, messbar, mit Zeitraum)
+  # bullets: Bausteine für den Lebenslauf, je Bewerbung anpassen
   - period: "02.2026 – heute"
     role: "Softwareentwickler (freiberuflich)"
     company: "Selbstständig"
@@ -41,8 +43,9 @@ experience:
       - "Beratung zu Digitalisierung, Daten und KI-Einsatz"
     story: >-
       Seit Februar 2026 entwickle ich als Freiberufler SaaS-Lösungen für kleine und
-      mittlere Unternehmen. Ich konzipiere die Web-Anwendungen, setze sie um und
-      betreibe sie, und berate die Unternehmen zu Digitalisierung, Daten und KI-Einsatz.
+      mittlere Unternehmen, von der Konzeption über die Umsetzung bis zum Betrieb der
+      Web-Anwendungen. Parallel berate ich die Unternehmen zu Digitalisierung, Daten
+      und KI-Einsatz.
   - period: "01.2025 – 12.2025"
     role: "Application & Software Quality Engineer (Werkstudent)"
     company: "NT Neue Technologie AG"
@@ -54,10 +57,11 @@ experience:
       - "Automatisierte E2E-Tests mit Playwright und TypeScript in CI/CD-Pipelines integriert"
       - "Manuelle Fachtests und Qualitätsreporting"
     story: >-
-      Für Banking-Anwendungen habe ich Testszenarien für über 50 Customer Journeys
-      geschrieben. Die End-to-End-Tests habe ich mit Playwright und TypeScript
-      automatisiert und in die CI/CD-Pipelines integriert. Dazu kamen manuelle
-      Fachtests und das Qualitätsreporting.
+      Zwölf Monate lang habe ich bei der NT AG die Qualität von Banking-Anwendungen
+      abgesichert. Für über 50 Customer Journeys habe ich Testszenarien geschrieben
+      und die End-to-End-Tests mit Playwright und TypeScript automatisiert. Die Tests
+      habe ich in die CI/CD-Pipelines integriert und die Ergebnisse zusammen mit
+      manuellen Fachtests im Qualitätsreporting aufbereitet.
   - period: "06.2024 – 09.2024"
     role: "Werkstudent Data Science (Bachelorarbeit)"
     company: "JENOPTIK"
@@ -69,10 +73,11 @@ experience:
       - "Live-Dashboards in SAP Analytics Cloud aufgebaut"
       - "Performance- und Lasttests sowie Schulungen der Anwender"
     story: >-
-      In meiner Bachelorarbeit habe ich einen Echtzeit-Liefermonitor gebaut. Die Daten
-      kommen über ABAP CDS Views direkt aus SAP S/4HANA, die Live-Dashboards laufen in
-      SAP Analytics Cloud. Dazu gehörten Performance- und Lasttests und die Schulung
-      der Anwender.
+      In vier Monaten habe ich als Bachelorarbeit für das Team SCM Logistics &
+      Processes einen Echtzeit-Liefermonitor gebaut. Die Daten kommen über ABAP CDS
+      Views direkt aus SAP S/4HANA, die Dashboards in SAP Analytics Cloud zeigen den
+      Lieferstatus live statt in Batch-Reports. Abschließend habe ich Performance- und
+      Lasttests durchgeführt und die Anwender geschult.
   - period: "10.2023 – 05.2024"
     role: "Werkstudent Software- & Anwendungstest"
     company: "JENOPTIK"
@@ -84,9 +89,9 @@ experience:
       - "Tests für RFID-basierte Login-Karten"
       - "Unterstützung der MDM-Integration (Intune / Azure AD) und technische Dokumentation"
     story: >-
-      Ich habe Anwendungen gerätenah auf über 50 iOS-Geräten getestet und RFID-basierte
-      Login-Karten geprüft. Außerdem habe ich die MDM-Integration mit Intune und Azure AD
-      unterstützt und technisch dokumentiert.
+      Acht Monate lang habe ich Anwendungen gerätenah auf über 50 iOS-Geräten getestet
+      und RFID-basierte Login-Karten geprüft. Außerdem habe ich die MDM-Integration
+      mit Intune und Azure AD unterstützt und technisch dokumentiert.
   - period: "07.2022 – 09.2023"
     role: "Werkstudent Softwareentwicklung & Quality Assurance"
     company: "Siemens Energy"
@@ -98,10 +103,11 @@ experience:
       - "Testautomatisierung mit Selenium"
       - ".NET-Anwendung zur Automatisierung von Test- und Supportprozessen"
     story: >-
-      Ich habe Produktions- und Wartungsanwendungen funktional und nicht-funktional
-      getestet und die Tests mit Selenium automatisiert. Für wiederkehrende Test- und
-      Supportprozesse habe ich eine .NET-Anwendung entwickelt, die diese Abläufe
-      automatisiert.
+      15 Monate lang habe ich Produktions- und Wartungsanwendungen der Instandhaltung
+      funktional und nicht-funktional getestet, auch auf Laptops und iPads.
+      Wiederkehrende Testfälle habe ich mit Selenium automatisiert, und für
+      wiederkehrende Test- und Supportprozesse habe ich eine .NET-Anwendung
+      entwickelt, die diese Abläufe automatisiert.
   - period: "04.2021 – 10.2021"
     role: "Softwareentwickler (Praktikum)"
     company: "PT. Halotec Indonesia"
@@ -112,8 +118,9 @@ experience:
       - "OCR-basiertes Smart-Camera-Projekt zur Erkennung von Container-IDs (Computer Vision)"
       - "Entwicklung von Web- und Mobile-Anwendungen"
     story: >-
-      In der Forschung und Entwicklung habe ich an einer Smart Camera gearbeitet, die
-      Container-IDs per OCR erkennt, und Web- und Mobile-Anwendungen entwickelt.
+      Im siebenmonatigen Praktikum in der Forschung und Entwicklung habe ich an einer
+      Smart Camera mitgearbeitet, die Container-IDs per OCR erkennt, und die Kamera
+      getestet. Daneben habe ich Web- und Mobile-Anwendungen entwickelt.
   - period: "01.2020 – 12.2020"
     role: "Data Validation (freiberuflich)"
     company: "TELUS International AI Data Solutions"

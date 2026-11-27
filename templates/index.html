@@ -166,18 +166,40 @@
   <div class="container">
     <p class="kicker">Werdegang</p>
     <h2>Berufserfahrung</h2>
+    <p class="section-sub">Jeder Balken zeigt die echte Dauer, von {{ timeline.years[0] }} bis heute.</p>
+    <div class="ruler-scroll">
+      <div class="ruler" style="--t:{{ timeline.total }};--now:{{ timeline.now }}" role="img"
+           aria-label="Zeitstrahl der beruflichen Stationen von {{ timeline.years[0] }} bis heute">
+        <div class="lane">
+          {% for s in timeline.spans %}
+          <div class="bar{% if s.qa %} qa{% endif %}{% if s.current %} current{% endif %}" style="--s:{{ s.start }};--d:{{ s.length }}">{% if s.label %}<span>{{ s.label }}</span>{% endif %}</div>
+          {% endfor %}
+          <div class="now"><span>heute</span></div>
+        </div>
+        <div class="ticks" aria-hidden="true"></div>
+        <ol class="years" style="--n:{{ timeline.years | length }}" aria-hidden="true">{% for y in timeline.years %}<li>{{ y }}</li>{% endfor %}</ol>
+      </div>
+    </div>
+    <p class="legend" aria-hidden="true"><span><i></i>Entwicklung und Daten</span><span><i class="qa"></i>Qualität und Test</span><span><i class="cur"></i>Aktuell</span></p>
+
     <div class="timeline">
-      {% for e in site.experience %}
+      {% for e in site.experience if e.story %}
       <article>
         <p class="date">{{ e.period | replace(" – ", " bis ") }}<br><span>{{ e.place }}</span></p>
         <div>
           <h3>{{ e.role }}</h3>
           <p class="company">{{ e.company }}{% if e.area %} · {{ e.area }}{% endif %}</p>
-          {% if e.bullets %}<ul>{% for b in e.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+          <p class="story">{{ e.story }}</p>
         </div>
       </article>
       {% endfor %}
     </div>
+    <h3 class="earlier-head">Frühere Stationen</h3>
+    <ul class="earlier">
+      {% for e in site.experience if not e.story %}
+      <li><span class="date">{{ e.period | replace(" – ", " bis ") }}</span><span><b>{{ e.role }}</b>, {{ e.company }}, {{ e.place }}</span></li>
+      {% endfor %}
+    </ul>
     <p class="study-note">{{ site.study_note }}</p>
   </div>
 </section>
