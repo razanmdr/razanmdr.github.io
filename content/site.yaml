@@ -53,15 +53,17 @@ experience:
     place: "Erfurt"
     area: "Banking & Finance"
     bullets:
-      - "Testszenarien für über 50 Customer Journeys in Banking-Anwendungen erstellt"
-      - "Automatisierte E2E-Tests mit Playwright und TypeScript in CI/CD-Pipelines integriert"
-      - "Manuelle Fachtests und Qualitätsreporting"
+      - "Automatisierte E2E-Tests mit Playwright und TypeScript für Banking-Anwendungen aufgebaut"
+      - "Testszenarien für über 50 Customer Journeys entworfen und automatisiert"
+      - "Tests in CI/CD-Pipelines integriert"
+      - "Ergänzende manuelle Fachtests und Qualitätsreporting"
     story: >-
-      Zwölf Monate lang habe ich bei der NT AG die Qualität von Banking-Anwendungen
-      abgesichert. Für über 50 Customer Journeys habe ich Testszenarien geschrieben
-      und die End-to-End-Tests mit Playwright und TypeScript automatisiert. Die Tests
-      habe ich in die CI/CD-Pipelines integriert und die Ergebnisse zusammen mit
-      manuellen Fachtests im Qualitätsreporting aufbereitet.
+      Zwölf Monate lang habe ich bei der NT AG die Testautomatisierung für
+      Banking-Anwendungen vorangetrieben. Für über 50 Customer Journeys habe ich
+      Testszenarien entworfen und daraus automatisierte End-to-End-Tests mit
+      Playwright und TypeScript gebaut. Die Tests laufen in den CI/CD-Pipelines;
+      manuelle Fachtests habe ich ergänzend dort eingesetzt, wo Automatisierung nicht
+      sinnvoll war, und die Ergebnisse im Qualitätsreporting aufbereitet.
   - period: "06.2024 – 09.2024"
     role: "Werkstudent Data Science (Bachelorarbeit)"
     company: "JENOPTIK"
