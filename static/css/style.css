@@ -196,6 +196,7 @@ p { margin-bottom: 14px; }
 .earlier-head { margin-top: 30px; font-size: 1.05rem; }
 .earlier { list-style: none; padding: 0; margin: 0 0 24px; }
 .earlier li { display: grid; grid-template-columns: 220px 1fr; gap: 26px; padding: 8px 0; border-top: 1px solid var(--line); font-size: .94rem; }
+.earlier small { color: var(--muted); font-size: .88rem; }
 @media (max-width: 760px) { .earlier li { grid-template-columns: 1fr; gap: 2px; } }
 
 /* Education */

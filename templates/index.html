@@ -197,7 +197,7 @@
     <h3 class="earlier-head">Frühere Stationen</h3>
     <ul class="earlier">
       {% for e in site.experience if not e.story %}
-      <li><span class="date">{{ e.period | replace(" – ", " bis ") }}</span><span><b>{{ e.role }}</b>, {{ e.company }}, {{ e.place }}</span></li>
+      <li><span class="date">{{ e.period | replace(" – ", " bis ") }}</span><span><b>{{ e.role }}</b>, {{ e.company }}, {{ e.place }}{% if e.summary %}<br><small>{{ e.summary }}</small>{% endif %}</span></li>
       {% endfor %}
     </ul>
     <p class="study-note">{{ site.study_note }}</p>
