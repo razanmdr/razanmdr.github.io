@@ -280,3 +280,24 @@ footer { border-top: 1px solid var(--line); padding: 22px 0; color: var(--muted)
   .contact-buttons { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
+
+/* Featured projects: four per row, compact */
+.project-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.project-grid .project-visual { aspect-ratio: 16 / 9; }
+.project-grid .project-visual img { object-fit: contain; }
+.project-grid .flow-visual { padding: 0 12px; }
+.project-grid .flow-visual ol { gap: 6px 16px; }
+.project-grid .flow-visual li { font-size: .64rem; padding: 4px 6px; }
+.project-grid .flow-visual li:not(:last-child)::after { right: -13px; }
+.project-grid .project-body { padding: 16px; }
+.project-grid .project-meta { font-size: .64rem; margin-bottom: 6px; }
+.project-grid .project-body h3 { font-size: 1rem; margin-bottom: 6px; }
+.project-grid .project-body > p { font-size: .84rem; line-height: 1.5; margin-bottom: 10px; }
+.project-grid .project-body > p:nth-of-type(2) { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.project-grid .project-metric { font-size: .8rem; padding-top: 8px; }
+.project-grid .project-metric b { display: block; font-size: 1.15rem; }
+.project-grid .tags { margin: 6px 0 8px; }
+.project-grid .tags span { font-size: .68rem; padding: 2px 7px; }
+.project-grid .project-links { font-size: .82rem; gap: 6px 14px; }
+@media (max-width: 1100px) { .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .project-grid { grid-template-columns: 1fr; } }

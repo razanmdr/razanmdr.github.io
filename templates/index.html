@@ -4,7 +4,7 @@
   <div class="project-visual{% if not im.photo %} plot{% endif %}"><img src="{{ im.src }}" alt="{{ im.alt }}" loading="lazy" decoding="async"></div>
   {% else %}
   <div class="project-visual flow-visual cat-{{ p.category }}" aria-hidden="true">
-    <ol>{% for s in (p.flow or p.tags)[:5] %}<li>{{ s | replace(" · ", ", ") }}</li>{% endfor %}</ol>
+    <ol>{% for s in (p.flow or p.tags)[:3] %}<li>{{ s | replace(" · ", ", ") }}</li>{% endfor %}</ol>
   </div>
   {% endif %}
 {% endmacro %}
@@ -116,7 +116,7 @@
           <h3>{{ p.title }}</h3>
           <p>{{ p.summary }}</p>
           {% if p.metric %}<p class="project-metric"><b>{{ p.metric.value }}</b> {{ p.metric.label }}</p>{% endif %}
-          <div class="tags">{% for t in p.tags[:4] %}<span>{{ t }}</span>{% endfor %}</div>
+          <div class="tags">{% for t in p.tags[:3] %}<span>{{ t }}</span>{% endfor %}</div>
           <p class="project-links">
             <a href="projects/{{ p.slug }}/">Case Study</a>
             {% for l in p.links %}<a href="{{ l.url }}" target="_blank" rel="noopener">{{ l.label }}</a>{% endfor %}
