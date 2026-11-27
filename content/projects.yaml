@@ -45,7 +45,7 @@
   summary: >-
     Live-Überwachung der Auslieferungslogistik: ABAP CDS Views auf SAP S/4HANA
     als Datenbasis, Live-Dashboards in SAP Analytics Cloud.
-  metric: {value: "Live", label: "Dashboards statt Batch-Reports"}
+  metric: {value: "Live", label: "Lieferstatus direkt aus S/4HANA statt Batch-Reports"}
   flow: ["SAP S/4HANA", "ABAP CDS Views", "Live-Verbindung", "SAP Analytics Cloud", "Logistik-Team"]
   tags: ["SAP S/4HANA", "ABAP CDS", "SAP Analytics Cloud"]
   links: []
@@ -64,7 +64,7 @@
   summary: >-
     Überwacht ein Betrugserkennungsmodell in Produktion. NannyML (CBPE) schätzt
     die Modellleistung, bevor echte Labels vorliegen.
-  metric: {value: "94,36 %", label: "Baseline-Accuracy"}
+  metric: {value: "94,36 %", label: "Referenz-Accuracy, gegen die CBPE die Produktion ohne Labels schätzt"}
   flow: ["Referenzdaten", "Modell", "Produktionsdaten", "NannyML CBPE", "Performance-Schätzung"]
   tags: ["NannyML", "scikit-learn", "Model Monitoring"]
   links:
@@ -318,7 +318,7 @@
     QR-Code am elektronischen Regaletikett scannen, Frage wählen oder per Sprache
     stellen (vegan? Allergene? haltbar bis?) und die Antwort anhören – auf Deutsch,
     Englisch, Spanisch oder Arabisch, ohne App und ohne Personal.
-  metric: {value: "4,8 / 5", label: "Verständlichkeit der Sprachausgabe (Nutzertest, n = 5)"}
+  metric: {value: "4,8 / 5", label: "Sprachausgabe im Pilot-Nutzertest mit 5 Personen"}
   flow: ["QR am ESL", "Browser · 4 Sprachen", "Sprachfrage", "Netlify Function", "Gemini", "Keyword-Fallback"]
   tags: ["JavaScript", "Web Speech API", "Gemini", "Netlify Functions", "Google Sheets", "Barrierefreiheit"]
   links:

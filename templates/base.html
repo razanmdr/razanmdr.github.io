@@ -6,37 +6,36 @@
   <title>{% block title %}{{ person.name }}, {{ person.role }} in Jena{% endblock %}</title>
   <meta name="description" content="{% block desc %}{{ person.intro }}{% endblock %}">
   <meta property="og:title" content="{{ self.title() }}">
-  <meta property="og:description" content="{{ self.desc() }}">
+  <meta property="og:description" content="{% block ogdesc %}{{ person.tagline }} M.Sc. E-Commerce (Data/AI), EAH Jena, Werkstudent bei JENOPTIK, Siemens Energy und NT AG.{% endblock %}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ site.base_url }}">
   <meta name="twitter:card" content="summary">
-  <meta name="theme-color" content="#F2F4F5">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#102a43">
   <link rel="stylesheet" href="{{ root }}static/css/style.css?v={{ asset_v }}">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230F1E2E'/><text x='50' y='68' font-size='52' font-family='sans-serif' font-weight='800' fill='%23ffffff' text-anchor='middle'>DR</text></svg>">
-  <script>document.documentElement.classList.remove('no-js')</script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23102a43'/><text x='50' y='66' font-size='46' font-family='sans-serif' font-weight='800' fill='%2347d4c0' text-anchor='middle'>DR</text></svg>">
+  <script>document.documentElement.classList.replace('no-js','js')</script>
 </head>
 <body>
-  <header class="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="{{ root }}" aria-label="Dary Razan, Startseite">Dary Razan</a>
-      <button type="button" class="menu-btn" id="menu-toggle" aria-expanded="false" aria-controls="nav-links">Menü</button>
-      <nav class="nav-links" id="nav-links" aria-label="Hauptnavigation">
-        <a href="{{ root }}#werdegang">Werdegang</a>
-        <a href="{{ root }}#masterarbeit">Masterarbeit</a>
-        <a href="{{ root }}#projekte">Projekte</a>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="{{ root }}" aria-label="{{ person.name }}, Startseite"><span class="brand-mark">DR</span>{{ person.name }}</a>
+      <button type="button" class="menu-button" id="menu-toggle" aria-expanded="false" aria-controls="nav-links">Menü</button>
+      <nav class="site-nav" id="nav-links" aria-label="Hauptnavigation">
+        <a href="{{ root }}#ueber-mich">Über mich</a>
         <a href="{{ root }}#kenntnisse">Kenntnisse</a>
+        <a href="{{ root }}#projekte">Projekte</a>
+        <a href="{{ root }}#werdegang">Werdegang</a>
+        <a href="{{ root }}#ausbildung">Ausbildung</a>
         <a class="nav-cta" href="{{ root }}#kontakt">Kontakt</a>
       </nav>
     </div>
   </header>
 
-  <main>{% block main %}{% endblock %}</main>
+  <main id="main">{% block main %}{% endblock %}</main>
 
-  <footer class="footer">
-    <div class="wrap footer-inner"><p>© 2026 {{ person.name }}, Jena</p><p>Statische Seite aus Python und Jinja2. Keine Cookies, kein Tracking.</p></div>
+  <footer>
+    <div class="container footer-inner"><p>© 2026 {{ person.name }}, Jena</p><p>Statische Seite aus Python und Jinja2. Keine Cookies, kein Tracking, keine externen Schriften.</p></div>
   </footer>
   <script src="{{ root }}static/js/main.js?v={{ asset_v }}"></script>
 </body>

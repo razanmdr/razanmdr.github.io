@@ -4,7 +4,7 @@ github_user: "razanmdr"
 person:
   name: "Mochammad Dary Razan"
   short: "Dary"
-  role: "Data Engineer / Data Scientist"
+  role: "AI & Data Engineer"
   photo: "static/img/profile.webp"
   location: "Jena, DE"
   email: "darry.razan@gmail.com"
@@ -136,10 +136,10 @@ skills:
     items: ["ISTQB", "Testplanung", "Playwright", "Selenium", "Cypress", "Azure DevOps", "CI/CD", "Jira", "Confluence"]
   - group: "Anwendungsentwicklung"
     items: ["JavaScript/TypeScript", "React", "Node.js", ".NET/C#", "Streamlit", "n8n"]
-  - group: "Weitere Kenntnisse"
-    items: ["Magento 2", "Shopify", "Shopware", "Odoo", "Salesforce", "HubSpot", "Flutter", "PHP", "Power Platform"]
+  - group: "E-Commerce-Systeme"
+    items: ["Magento 2", "Shopify", "Odoo"]
 
-interests: ["Recommender Systems", "Geospatial AI", "LLM-Evaluation"]
+interests: ["LLM-Evaluation", "KI-Agents", "Recommender Systems"]
 
 certifications:
   - {name: "Claude Certified Architect", issuer: "Anthropic", year: "2026"}
@@ -152,12 +152,17 @@ certifications:
 
 education:
   - {degree: "M.Sc. E-Commerce, Schwerpunkt Data/AI", school: "Ernst-Abbe-Hochschule Jena", period: "bis 03/2027"}
-  - {degree: "B.Sc. Business Engineering (E-Commerce)", school: "Ernst-Abbe-Hochschule Jena", period: "abgeschlossen"}
+  - {degree: "B.Sc. Business Engineering (E-Commerce)", school: "Ernst-Abbe-Hochschule Jena", period: "abgeschlossen 2024"}
 
 languages:
   - "Deutsch (C1)"
   - "Englisch (C1)"
   - "Bahasa Indonesia (Muttersprache)"
+
+study_note: >-
+  Zwischen und neben den Stationen: Vollzeitstudium an der Ernst-Abbe-Hochschule
+  Jena, B.Sc. Business Engineering (E-Commerce) bis 2024, danach M.Sc. E-Commerce
+  mit Schwerpunkt Data/AI.
 
 lab:
   - title: "Talking Label – Live-Demo"

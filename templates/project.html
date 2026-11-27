@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 {% block title %}{{ p.title }}, {{ person.name }}{% endblock %}
 {% block desc %}{{ p.summary | trim }}{% endblock %}
+{% block ogdesc %}{{ p.summary | trim }}{% endblock %}
 {% block main %}
 <article class="section">
   <div class="wrap case">
-    <a class="back" href="{{ root }}#arbeiten">Zurück zur Übersicht</a>
+    <a class="back" href="{{ root }}#projekte">Zurück zur Übersicht</a>
     <p class="kind">{{ p.category_label }}{% if p.badge %}, {{ p.badge | replace(" · ", ", ") }}{% endif %}</p>
     <h1>{{ p.title | replace(" – ", ": ") }}</h1>
     <p class="lead">{{ p.summary }}</p>
